@@ -3,13 +3,13 @@
  * Authentic Information & Accredited Credentials for Elijah Exconde
  */
 
-const STORAGE_KEY = 'my_react_portfolio_data_v5';
+const STORAGE_KEY = 'my_react_portfolio_data_v6';
 
 export const initialPortfolioData = {
   profile: {
     name: "Elijah Exconde",
     title: "Freelance Worker",
-    bio: "Detail-oriented Freelance Worker with hands-on coursework and practical expertise in administrative support, finance tracking, customer communication, video editing, and AI productivity tools. Equipped with verified credentials in Psychological First Aid, Bookkeeping, HubSpot CRM, and Salesforce Integrations. Dedicated to delivering reliable, high-quality operational support.",
+    bio: "Detail-oriented Freelance Worker with hands-on coursework and practical skills in administrative support, financial recordkeeping, customer communication, video editing, and AI productivity tools. Holds verified course completions and training certificates in Psychological First Aid, Bookkeeping & Accounting Fundamentals, HubSpot CRM, and Salesforce Integrations. Dedicated to delivering reliable, high-quality operational support.",
     location: "Lipa City, Philippines",
     email: "exconde.elijah@gmail.com",
     phone: "+63 976 259 1824",
@@ -72,8 +72,8 @@ export const initialPortfolioData = {
       category: "Finance & Admin",
       badgeIcon: "Database",
       imagePath: "images/certificateBOOKKEEPING-1.png",
-      skills: ["Double-Entry Bookkeeping", "Accounting Principles", "Financial Records", "Numerical Analysis"],
-      description: "8-hour course covering essential numerical skills required for accounting and bookkeeping including double-entry bookkeeping."
+      skills: ["Double-Entry Bookkeeping", "Accounting Principles", "Financial Records", "Numerical Skills"],
+      description: "Statement of Participation for completing an 8-hour course covering essential numerical skills required for accounting and bookkeeping including double-entry bookkeeping."
     },
     {
       id: "cert-5",
@@ -106,12 +106,12 @@ export const initialPortfolioData = {
   ],
   skills: [
     {
-      category: "Verified Credentials & Badges",
+      category: "Verified Credentials & Coursework",
       items: [
         "HubSpot Accredited Email Marketer",
         "Salesforce CRM Integration Specialist",
         "University of Helsinki AI Foundations",
-        "OpenLearn Verified Bookkeeper",
+        "OpenLearn Bookkeeping & Accounting Coursework",
         "NCTSN Psychological First Aid Trained",
         "105 WPM / 100% Accuracy Data Entry"
       ]
@@ -122,7 +122,7 @@ export const initialPortfolioData = {
         "Administrative Support",
         "Data Entry & Record Management",
         "Calendar & Meeting Scheduling",
-        "Finance Administration & Budget Tracking",
+        "Financial Recordkeeping Basics",
         "Customer Service & Communication"
       ]
     },

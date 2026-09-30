@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import { Award, FileText, Menu, X } from 'lucide-react';
+import React from 'react';
+import { Award } from 'lucide-react';
 
-export default function Header({ profile, onOpenResumeModal }) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+export default function Header({ profile }) {
   return (
     <header class="site-header">
       <div class="container header-inner">
@@ -12,29 +10,13 @@ export default function Header({ profile, onOpenResumeModal }) {
           <span>{profile.name}</span>
         </a>
 
-        {/* Desktop & Mobile Navigation Links */}
-        <nav class={`nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-          <a href="#about" class="nav-link" onClick={() => setIsMobileMenuOpen(false)}>About</a>
-          <a href="#certifications" class="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Certifications</a>
-          <a href="#skills" class="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Skills</a>
-          <a href="#contact" class="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
+        {/* Clean Navigation Links */}
+        <nav class="nav-menu">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#certifications" class="nav-link">Certifications</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#contact" class="nav-link">Contact</a>
         </nav>
-
-        <div class="header-actions">
-          <button onClick={onOpenResumeModal} class="btn-primary">
-            <FileText size={16} />
-            <span>Resume PDF</span>
-          </button>
-
-          {/* Mobile Menu Hamburger Button */}
-          <button
-            class="mobile-menu-btn icon-btn"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Mobile Navigation Menu"
-          >
-            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
       </div>
     </header>
   );

@@ -17,10 +17,7 @@ export default function App() {
 
   return (
     <div className="app-root">
-      <Header
-        profile={portfolioData.profile}
-        onOpenResumeModal={() => setIsResumeModalOpen(true)}
-      />
+      <Header profile={portfolioData.profile} />
 
       <Hero
         profile={portfolioData.profile}

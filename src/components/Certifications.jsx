@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Award, Search, ChevronDown, ChevronUp, ExternalLink, Eye, Cloud, Code, Shield, Database, Cpu } from 'lucide-react';
+import { Award, ChevronDown, ChevronUp, ExternalLink, Eye, Cloud, Code, Shield, Database, Cpu } from 'lucide-react';
 import CertCard from './CertCard';
 
 const categories = ['All', 'Marketing & CRM', 'Project Management', 'AI & Tech', 'Finance & Admin', 'Crisis & Wellness'];
@@ -15,19 +15,10 @@ const iconMap = {
 
 export default function Certifications({ certifications, onViewDetail }) {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
   const [expandedCertId, setExpandedCertId] = useState(null);
 
   const filteredCerts = certifications.filter((cert) => {
-    const matchesCategory = activeCategory === 'All' || cert.category === activeCategory;
-    const query = searchQuery.toLowerCase().trim();
-    const matchesQuery =
-      !query ||
-      cert.title.toLowerCase().includes(query) ||
-      cert.issuer.toLowerCase().includes(query) ||
-      (cert.skills || []).some((s) => s.toLowerCase().includes(query));
-
-    return matchesCategory && matchesQuery;
+    return activeCategory === 'All' || cert.category === activeCategory;
   });
 
   const toggleAccordion = (id) => {
@@ -35,45 +26,33 @@ export default function Certifications({ certifications, onViewDetail }) {
   };
 
   return (
-    <section class="section" id="certifications">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-subtitle">Verified Accreditation</div>
-          <h2 class="section-title">Certifications & Credentials</h2>
-          <p class="section-desc">
+    <section className="section" id="certifications">
+      <div className="container">
+        <div className="section-header">
+          <div className="section-subtitle">Verified Accreditation</div>
+          <h2 className="section-title">Certifications & Credentials</h2>
+          <p className="section-desc">
             Verified course completions, professional certificates, and skill badges for Elijah Exconde. Click any credential to inspect details or preview the original document.
           </p>
         </div>
 
-        {/* Minimalist & Non-Boxy Filter Toolbar */}
-        <div class="cert-controls-minimal">
-          <div class="filter-pills-minimal">
+        {/* Minimalist Filter Category Pills (Search Bar Removed) */}
+        <div className="cert-controls-minimal">
+          <div className="filter-pills-minimal">
             {categories.map((cat) => (
               <button
                 key={cat}
-                class={`pill-filter-btn ${activeCategory === cat ? 'active' : ''}`}
+                className={`pill-filter-btn ${activeCategory === cat ? 'active' : ''}`}
                 onClick={() => setActiveCategory(cat)}
               >
                 {cat}
               </button>
             ))}
           </div>
-
-          <div class="cert-search-minimal" style={{ position: 'relative' }}>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Search certs..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              style={{ paddingLeft: '2.1rem' }}
-            />
-            <Search size={14} style={{ position: 'absolute', left: '0.75rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
-          </div>
         </div>
 
         {/* Desktop View: Grid Layout */}
-        <div class="cert-grid-desktop">
+        <div className="cert-grid-desktop">
           {filteredCerts.length > 0 ? (
             filteredCerts.map((cert) => (
               <CertCard
@@ -86,40 +65,40 @@ export default function Certifications({ certifications, onViewDetail }) {
             <div style={{ textAlign: 'center', padding: '3rem 1rem', background: '#ffffff', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)', gridColumn: '1 / -1' }}>
               <Award size={36} style={{ color: 'var(--text-muted)', marginBottom: '0.5rem' }} />
               <h4 style={{ fontSize: '1rem', fontWeight: 600 }}>No certifications found</h4>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Try selecting another filter or clearing the search query.</p>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Try selecting another category filter.</p>
             </div>
           )}
         </div>
 
         {/* Mobile View: Tappable Dropdown Accordion List */}
-        <div class="cert-mobile-accordion">
+        <div className="cert-mobile-accordion">
           {filteredCerts.length > 0 ? (
             filteredCerts.map((cert) => {
               const isOpen = expandedCertId === cert.id;
               const IconComponent = iconMap[cert.badgeIcon] || Award;
 
               return (
-                <div key={cert.id} class={`mobile-cert-item ${isOpen ? 'open' : ''}`}>
-                  <div class="mobile-cert-header" onClick={() => toggleAccordion(cert.id)}>
-                    <div class="mobile-cert-header-left">
-                      <div class="cert-badge-icon" style={{ width: '2.25rem', height: '2.25rem' }}>
+                <div key={cert.id} className={`mobile-cert-item ${isOpen ? 'open' : ''}`}>
+                  <div className="mobile-cert-header" onClick={() => toggleAccordion(cert.id)}>
+                    <div className="mobile-cert-header-left">
+                      <div className="cert-badge-icon" style={{ width: '2.25rem', height: '2.25rem' }}>
                         <IconComponent size={18} />
                       </div>
-                      <div class="mobile-cert-info">
-                        <div class="cert-category" style={{ fontSize: '0.675rem' }}>{cert.category}</div>
-                        <div class="mobile-cert-title">{cert.title}</div>
-                        <div class="mobile-cert-issuer">{cert.issuer}</div>
+                      <div className="mobile-cert-info">
+                        <div className="cert-category" style={{ fontSize: '0.675rem' }}>{cert.category}</div>
+                        <div className="mobile-cert-title">{cert.title}</div>
+                        <div className="mobile-cert-issuer">{cert.issuer}</div>
                       </div>
                     </div>
 
-                    <div class="mobile-cert-toggle-badge">
+                    <div className="mobile-cert-toggle-badge">
                       <span>{isOpen ? 'Close' : 'Details'}</span>
                       {isOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                     </div>
                   </div>
 
                   {isOpen && (
-                    <div class="mobile-cert-body">
+                    <div className="mobile-cert-body">
                       {cert.imagePath && (
                         <div
                           onClick={() => onViewDetail(cert)}
@@ -143,26 +122,26 @@ export default function Certifications({ certifications, onViewDetail }) {
                         {cert.description}
                       </p>
 
-                      <div class="cert-skills-list">
+                      <div className="cert-skills-list">
                         {(cert.skills || []).map((skill, i) => (
-                          <span key={i} class="skill-pill">
+                          <span key={i} className="skill-pill">
                             {skill}
                           </span>
                         ))}
                       </div>
 
-                      <div class="cert-footer" style={{ paddingTop: '0.75rem' }}>
-                        <div class="cert-dates">
+                      <div className="cert-footer" style={{ paddingTop: '0.75rem' }}>
+                        <div className="cert-dates">
                           <span>Issued: {cert.issueDate || 'N/A'}</span>
                         </div>
 
-                        <div class="cert-actions">
-                          <button onClick={() => onViewDetail(cert)} class="cert-link-btn">
+                        <div className="cert-actions">
+                          <button onClick={() => onViewDetail(cert)} className="cert-link-btn">
                             <Eye size={14} />
                             <span>View Certificate</span>
                           </button>
                           {cert.credentialUrl && (
-                            <a href={cert.credentialUrl} target="_blank" rel="noreferrer" class="cert-link-btn" title="Verify Online">
+                            <a href={cert.credentialUrl} target="_blank" rel="noreferrer" className="cert-link-btn" title="Verify Online">
                               <ExternalLink size={14} />
                             </a>
                           )}

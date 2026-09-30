@@ -401,29 +401,30 @@ button {
 /* Compact & Minimalist Certifications Section */
 .cert-controls-minimal {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: center;
   margin-bottom: 1.75rem;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.85rem;
   border-bottom: 1px solid var(--border-color);
 }
 
 .filter-pills-minimal {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.45rem;
 }
 
 .pill-filter-btn {
-  padding: 0.35rem 0.85rem;
+  padding: 0.38rem 0.9rem;
   border-radius: var(--radius-full);
   color: var(--text-secondary);
   font-weight: 500;
   font-size: 0.85rem;
   background: transparent;
   border: 1px solid transparent;
+  cursor: pointer;
   transition: all var(--transition-fast);
 }
 
@@ -437,10 +438,6 @@ button {
   color: var(--accent-primary);
   font-weight: 600;
   border-color: rgba(37, 99, 235, 0.2);
-}
-
-.cert-search-minimal {
-  width: 220px;
 }
 
 .form-input {

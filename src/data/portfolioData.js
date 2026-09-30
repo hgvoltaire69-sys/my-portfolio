@@ -3,13 +3,13 @@
  * Authentic Information & Accredited Credentials for Elijah Exconde
  */
 
-const STORAGE_KEY = 'my_react_portfolio_data_v9';
+const STORAGE_KEY = 'my_react_portfolio_data_v10';
 
 export const initialPortfolioData = {
   profile: {
     name: "Elijah Exconde",
     title: "Freelance Worker",
-    bio: "Detail-oriented Freelance Worker with hands-on coursework and practical skills in administrative support, project task tracking, Gantt scheduling, financial recordkeeping, customer communication, video editing, and AI productivity tools. Holds verified course completions and certificates in CBRE Project Management, Psychological First Aid, Bookkeeping & Accounting Fundamentals, HubSpot CRM, and Salesforce Integrations. Dedicated to delivering reliable, high-quality operational support.",
+    bio: "Certified Freelance Operations Specialist delivering high-precision administrative support, CRM workflows (HubSpot & Salesforce), and AI tool integration. Backed by 7 accredited credentials, 105 WPM / 100% precision data entry, and reliable EST remote coverage.",
     location: "Lipa City, Philippines",
     email: "exconde.elijah@gmail.com",
     phone: "+63 976 259 1824",

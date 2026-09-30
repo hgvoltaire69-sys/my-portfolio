@@ -1,0 +1,124 @@
+{
+  "profile": {
+    "name": "Alex Morgan",
+    "title": "Full-Stack Developer & Cloud Specialist",
+    "bio": "Passionate software engineer focused on building performant web applications, modern cloud architecture, and user-centric interfaces. Continuous learner dedicated to staying updated with latest technologies and industry certifications.",
+    "location": "San Francisco, CA",
+    "email": "alex.morgan@example.com",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com",
+    "twitter": "https://twitter.com",
+    "website": "https://example.com"
+  },
+  "certifications": [
+    {
+      "id": "cert-1",
+      "title": "AWS Certified Solutions Architect",
+      "issuer": "Amazon Web Services",
+      "issueDate": "2024-03-15",
+      "expiryDate": "2027-03-15",
+      "credentialId": "AWS-PSA-987654321",
+      "credentialUrl": "https://aws.amazon.com/verification",
+      "category": "Cloud & Infrastructure",
+      "badgeIcon": "aws",
+      "skills": ["AWS", "Cloud Architecture", "EC2", "S3", "Lambda", "IAM"],
+      "description": "Validates expertise in designing distributed systems and deploying resilient, highly available applications on AWS."
+    },
+    {
+      "id": "cert-2",
+      "title": "Meta Front-End Developer Professional Certificate",
+      "issuer": "Meta (Coursera)",
+      "issueDate": "2023-11-10",
+      "expiryDate": "Never Expires",
+      "credentialId": "META-FED-456789",
+      "credentialUrl": "https://coursera.org/verify",
+      "category": "Web Development",
+      "badgeIcon": "code",
+      "skills": ["React", "JavaScript (ES6+)", "CSS3", "HTML5", "UX/UI Design", "Git"],
+      "description": "Comprehensive program covering frontend frameworks, responsive UI design, accessibility, and modern JavaScript standards."
+    },
+    {
+      "id": "cert-3",
+      "title": "Google Cloud Associate Cloud Engineer",
+      "issuer": "Google Cloud",
+      "issueDate": "2024-01-20",
+      "expiryDate": "2026-01-20",
+      "credentialId": "GCP-ACE-112233",
+      "credentialUrl": "https://cloud.google.com/certification",
+      "category": "Cloud & Infrastructure",
+      "badgeIcon": "cloud",
+      "skills": ["Google Cloud Platform", "Kubernetes", "BigQuery", "IAM", "Cloud Build"],
+      "description": "Demonstrates ability to deploy applications, monitor operations, and manage enterprise Google Cloud environments."
+    },
+    {
+      "id": "cert-4",
+      "title": "CompTIA Security+ (SY0-601)",
+      "issuer": "CompTIA",
+      "issueDate": "2023-08-05",
+      "expiryDate": "2026-08-05",
+      "credentialId": "COMP-SEC-778899",
+      "credentialUrl": "https://comptia.org/verify",
+      "category": "Cybersecurity",
+      "badgeIcon": "shield",
+      "skills": ["Network Security", "Threat Management", "Cryptography", "Risk Mitigation"],
+      "description": "Validates foundational cybersecurity principles, network infrastructure security, and vulnerability management."
+    }
+  ],
+  "skills": [
+    {
+      "category": "Frontend Development",
+      "items": ["React", "Vue.js", "TypeScript", "HTML5 / CSS3", "Tailwind / SASS", "Web Accessibility (A11y)"]
+    },
+    {
+      "category": "Backend & Cloud",
+      "items": ["Node.js / Express", "Python / FastApi", "PostgreSQL / MongoDB", "AWS & GCP", "Docker & Kubernetes"]
+    },
+    {
+      "category": "Tools & Methodology",
+      "items": ["Git & GitHub Actions", "Jest / Cypress Testing", "REST & GraphQL APIs", "Agile / Scrum", "CI/CD Pipelines"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-1",
+      "title": "Cloud Dashboard Analytics Platform",
+      "category": "Full-Stack",
+      "description": "Real-time infrastructure monitoring dashboard featuring metrics visualization, server alerts, and automated backup schedules.",
+      "techStack": ["React", "Node.js", "Chart.js", "AWS S3", "Tailwind CSS"],
+      "demoUrl": "#",
+      "githubUrl": "#"
+    },
+    {
+      "id": "proj-2",
+      "title": "E-Commerce Microservices Suite",
+      "category": "Backend",
+      "description": "Scalable RESTful microservices for product catalog management, payment gateway integration, and order fulfillment.",
+      "techStack": ["Node.js", "Express", "Docker", "PostgreSQL", "Redis"],
+      "demoUrl": "#",
+      "githubUrl": "#"
+    },
+    {
+      "id": "proj-3",
+      "title": "Interactive UI Component Design System",
+      "category": "Frontend",
+      "description": "Accessible, reusable design system with 30+ custom UI components, dark mode support, and comprehensive documentation.",
+      "techStack": ["TypeScript", "CSS Variables", "Storybook", "HTML5"],
+      "demoUrl": "#",
+      "githubUrl": "#"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Senior Frontend Developer",
+      "company": "TechNova Solutions",
+      "period": "2023 - Present",
+      "description": "Leading the core UI engineering team building customer portal applications, optimizing Core Web Vitals, and mentoring junior developers."
+    },
+    {
+      "role": "Full-Stack Developer",
+      "company": "Apex Digital Labs",
+      "period": "2021 - 2023",
+      "description": "Engineered web applications and REST APIs, reduced bundle size by 35%, and integrated cloud storage workflows."
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, Shield, Mail, User, Linkedin, Phone, FileText, Download } from 'lucide-react';
+import { CheckCircle, Shield, Mail, User, Linkedin, Phone, FileText, Download, Award, Zap, Clock } from 'lucide-react';
 
 export default function Hero({ profile, certCount, onOpenResumeModal }) {
   return (
@@ -38,18 +38,36 @@ export default function Hero({ profile, certCount, onOpenResumeModal }) {
               </a>
             </div>
 
-            <div class="hero-stats">
-              <div class="stat-item">
-                <div class="stat-number">{certCount}</div>
-                <div class="stat-label">Accredited Credentials</div>
+            {/* Enhanced Minimalist Graphic Cards Section */}
+            <div class="hero-graphic-stats">
+              <div class="graphic-stat-card">
+                <div class="graphic-stat-icon" style={{ background: '#eff6ff', color: '#2563eb' }}>
+                  <Award size={22} />
+                </div>
+                <div>
+                  <div class="graphic-stat-value">{certCount} Credentials</div>
+                  <div class="graphic-stat-label">Accredited Coursework & Badges</div>
+                </div>
               </div>
-              <div class="stat-item">
-                <div class="stat-number">80+ WPM</div>
-                <div class="stat-label">Typing Speed (100% Acc)</div>
+
+              <div class="graphic-stat-card">
+                <div class="graphic-stat-icon" style={{ background: '#f0fdf4', color: '#16a34a' }}>
+                  <Zap size={22} />
+                </div>
+                <div>
+                  <div class="graphic-stat-value">80+ WPM</div>
+                  <div class="graphic-stat-label">Typing Speed (100% Accuracy)</div>
+                </div>
               </div>
-              <div class="stat-item">
-                <div class="stat-number">08:00AM - 05:00AM EST</div>
-                <div class="stat-label">Available Hours</div>
+
+              <div class="graphic-stat-card">
+                <div class="graphic-stat-icon" style={{ background: '#fef3c7', color: '#d97706' }}>
+                  <Clock size={22} />
+                </div>
+                <div>
+                  <div class="graphic-stat-value">08:00 AM - 05:00 AM EST</div>
+                  <div class="graphic-stat-label">Available Hours (US/UK Coverage)</div>
+                </div>
               </div>
             </div>
           </div>

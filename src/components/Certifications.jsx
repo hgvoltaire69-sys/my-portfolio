@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Award, Search } from 'lucide-react';
 import CertCard from './CertCard';
 
-const categories = ['All', 'Marketing & CRM', 'AI & Tech', 'Finance & Admin', 'Crisis & Wellness'];
+const categories = ['All', 'Marketing & CRM', 'Project Management', 'AI & Tech', 'Finance & Admin', 'Crisis & Wellness'];
 
 export default function Certifications({ certifications, onViewDetail }) {
   const [activeCategory, setActiveCategory] = useState('All');

@@ -87,9 +87,7 @@ button {
   padding: 0 1.25rem;
 }
 
-/* --------------------------------------------------------------------------
-   Header Navigation
-   -------------------------------------------------------------------------- */
+/* Header Navigation */
 .site-header {
   position: sticky;
   top: 0;
@@ -190,9 +188,7 @@ button {
   color: var(--text-primary);
 }
 
-/* --------------------------------------------------------------------------
-   Hero Section
-   -------------------------------------------------------------------------- */
+/* Hero Section */
 .hero-section {
   padding: 4rem 0 3.5rem;
   background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
@@ -255,24 +251,55 @@ button {
   margin-bottom: 2rem;
 }
 
-.hero-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding-top: 1.5rem;
+/* Minimalist Graphic Cards Section */
+.hero-graphic-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding-top: 1.75rem;
   border-top: 1px solid var(--border-color);
 }
 
-.stat-item .stat-number {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1.1;
+.graphic-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
 
-.stat-item .stat-label {
-  font-size: 0.825rem;
+.graphic-stat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-highlight);
+  box-shadow: var(--shadow-md);
+}
+
+.graphic-stat-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.graphic-stat-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.graphic-stat-label {
+  font-size: 0.75rem;
   color: var(--text-muted);
+  line-height: 1.2;
+  margin-top: 0.15rem;
 }
 
 /* Profile Card */
@@ -344,9 +371,7 @@ button {
   border-color: var(--accent-primary);
 }
 
-/* --------------------------------------------------------------------------
-   Sections Common
-   -------------------------------------------------------------------------- */
+/* Sections Common */
 .section {
   padding: 3.5rem 0;
 }
@@ -378,9 +403,7 @@ button {
   font-size: 1rem;
 }
 
-/* --------------------------------------------------------------------------
-   Compact & Minimalist Certifications Section
-   -------------------------------------------------------------------------- */
+/* Compact & Minimalist Certifications Section */
 .cert-controls-minimal {
   display: flex;
   flex-wrap: wrap;
@@ -392,7 +415,6 @@ button {
   border-bottom: 1px solid var(--border-color);
 }
 
-/* Sleek Non-Boxy Filter Pills */
 .filter-pills-minimal {
   display: flex;
   flex-wrap: wrap;
@@ -566,9 +588,7 @@ button {
   text-decoration: underline;
 }
 
-/* --------------------------------------------------------------------------
-   Skills Section
-   -------------------------------------------------------------------------- */
+/* Skills Section */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -609,9 +629,7 @@ button {
   font-weight: 500;
 }
 
-/* --------------------------------------------------------------------------
-   Contact Section
-   -------------------------------------------------------------------------- */
+/* Contact Section */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -674,9 +692,7 @@ button {
   border-color: var(--accent-primary);
 }
 
-/* --------------------------------------------------------------------------
-   Modal Overlays
-   -------------------------------------------------------------------------- */
+/* Modal Overlays */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -735,9 +751,7 @@ button {
   background: #ffffff;
 }
 
-/* --------------------------------------------------------------------------
-   Mobile Responsiveness Media Queries
-   -------------------------------------------------------------------------- */
+/* Mobile Responsiveness Media Queries */
 @media (max-width: 868px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -749,8 +763,8 @@ button {
   .hero-cta {
     justify-content: center;
   }
-  .hero-stats {
-    justify-content: center;
+  .hero-graphic-stats {
+    grid-template-columns: 1fr;
   }
   .contact-grid {
     grid-template-columns: 1fr;

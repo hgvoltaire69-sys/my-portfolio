@@ -3,13 +3,13 @@
  * Authentic Information & Accredited Credentials for Elijah Exconde
  */
 
-const STORAGE_KEY = 'my_react_portfolio_data_v6';
+const STORAGE_KEY = 'my_react_portfolio_data_v7';
 
 export const initialPortfolioData = {
   profile: {
     name: "Elijah Exconde",
     title: "Freelance Worker",
-    bio: "Detail-oriented Freelance Worker with hands-on coursework and practical skills in administrative support, financial recordkeeping, customer communication, video editing, and AI productivity tools. Holds verified course completions and training certificates in Psychological First Aid, Bookkeeping & Accounting Fundamentals, HubSpot CRM, and Salesforce Integrations. Dedicated to delivering reliable, high-quality operational support.",
+    bio: "Detail-oriented Freelance Worker with hands-on coursework and practical skills in administrative support, project task tracking, financial recordkeeping, customer communication, video editing, and AI productivity tools. Holds verified course completions and certificates in CBRE Project Management, Psychological First Aid, Bookkeeping & Accounting Fundamentals, HubSpot CRM, and Salesforce Integrations. Dedicated to delivering reliable, high-quality operational support.",
     location: "Lipa City, Philippines",
     email: "exconde.elijah@gmail.com",
     phone: "+63 976 259 1824",
@@ -49,6 +49,20 @@ export const initialPortfolioData = {
     },
     {
       id: "cert-3",
+      title: "CBRE Project Management Job Simulation",
+      issuer: "CBRE & Forage",
+      issueDate: "2026-09-30",
+      expiryDate: "Never Expires",
+      credentialId: "6abcae0ede68562c3ede3b50",
+      credentialUrl: "https://www.theforage.com/",
+      category: "Project Management",
+      badgeIcon: "Award",
+      imagePath: "images/certificatePROJECTMANAGEMENT-1.png",
+      skills: ["Project Planning", "Executing & Monitoring", "Task Tracking", "Resource Coordination"],
+      description: "Statement of Completion for practical tasks in project planning, executing, tracking, and monitoring through CBRE's Job Simulation program on Forage."
+    },
+    {
+      id: "cert-4",
       title: "Elements of AI - Certificate of Completion",
       issuer: "University of Helsinki & MinnaLearn",
       issueDate: "2026-09-30",
@@ -62,7 +76,7 @@ export const initialPortfolioData = {
       description: "Successfully completed the 2 ECTS credits online course covering artificial intelligence concepts, algorithms, machine learning models, and societal impacts."
     },
     {
-      id: "cert-4",
+      id: "cert-5",
       title: "Introduction to Bookkeeping and Accounting",
       issuer: "OpenLearn | The Open University",
       issueDate: "2026-09-30",
@@ -76,7 +90,7 @@ export const initialPortfolioData = {
       description: "Statement of Participation for completing an 8-hour course covering essential numerical skills required for accounting and bookkeeping including double-entry bookkeeping."
     },
     {
-      id: "cert-5",
+      id: "cert-6",
       title: "Psychological First Aid (PFA) Online",
       issuer: "The National Child Traumatic Stress Network (NCTSN)",
       issueDate: "2026-06-03",
@@ -90,7 +104,7 @@ export const initialPortfolioData = {
       description: "Completed Psychological First Aid (PFA) Online training for crisis intervention, disaster response, and traumatic stress support."
     },
     {
-      id: "cert-6",
+      id: "cert-7",
       title: "Typing Proficiency Certificate of Excellence",
       issuer: "TypingTest.me",
       issueDate: "2026-09-29",
@@ -108,6 +122,7 @@ export const initialPortfolioData = {
     {
       category: "Verified Credentials & Coursework",
       items: [
+        "CBRE Project Management Simulation (Forage)",
         "HubSpot Accredited Email Marketer",
         "Salesforce CRM Integration Specialist",
         "University of Helsinki AI Foundations",
@@ -120,6 +135,7 @@ export const initialPortfolioData = {
       category: "Administrative & Operations",
       items: [
         "Administrative Support",
+        "Project Task Tracking & Monitoring",
         "Data Entry & Record Management",
         "Calendar & Meeting Scheduling",
         "Financial Recordkeeping Basics",

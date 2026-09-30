@@ -3,13 +3,13 @@
  * Authentic Information & Accredited Credentials for Elijah Exconde
  */
 
-const STORAGE_KEY = 'my_react_portfolio_data_v8';
+const STORAGE_KEY = 'my_react_portfolio_data_v9';
 
 export const initialPortfolioData = {
   profile: {
     name: "Elijah Exconde",
     title: "Freelance Worker",
-    bio: "Detail-oriented Freelance Worker with hands-on coursework and practical skills in administrative support, project task tracking, financial recordkeeping, customer communication, video editing, and AI productivity tools. Holds verified course completions and certificates in CBRE Project Management, Psychological First Aid, Bookkeeping & Accounting Fundamentals, HubSpot CRM, and Salesforce Integrations. Dedicated to delivering reliable, high-quality operational support.",
+    bio: "Detail-oriented Freelance Worker with hands-on coursework and practical skills in administrative support, project task tracking, Gantt scheduling, financial recordkeeping, customer communication, video editing, and AI productivity tools. Holds verified course completions and certificates in CBRE Project Management, Psychological First Aid, Bookkeeping & Accounting Fundamentals, HubSpot CRM, and Salesforce Integrations. Dedicated to delivering reliable, high-quality operational support.",
     location: "Lipa City, Philippines",
     email: "exconde.elijah@gmail.com",
     phone: "+63 976 259 1824",
@@ -49,7 +49,7 @@ export const initialPortfolioData = {
     },
     {
       id: "cert-3",
-      title: "CBRE Project Management Job Simulation",
+      title: "Project Management Training (CBRE & Forage)",
       issuer: "CBRE & Forage",
       issueDate: "2026-09-30",
       expiryDate: "Never Expires",
@@ -58,8 +58,8 @@ export const initialPortfolioData = {
       category: "Project Management",
       badgeIcon: "Award",
       imagePath: "images/certificatePROJECTMANAGEMENT-1.png",
-      skills: ["Project Planning", "Executing & Monitoring", "Task Tracking", "Resource Coordination"],
-      description: "Statement of Completion for practical tasks in project planning, executing, tracking, and monitoring through CBRE's Job Simulation program on Forage."
+      skills: ["Project Planning", "Executing & Monitoring", "Gantt Charts", "Task Tracking", "Resource Coordination"],
+      description: "Statement of Completion for practical tasks in project planning, executing, tracking, and monitoring through CBRE's Project Management Job Simulation on Forage."
     },
     {
       id: "cert-4",
@@ -135,7 +135,7 @@ export const initialPortfolioData = {
       category: "Administrative & Operations",
       items: [
         "Administrative Support",
-        "Project Task Tracking & Monitoring",
+        "Project Task Tracking & Gantt Scheduling",
         "Data Entry & Record Management",
         "Calendar & Meeting Scheduling",
         "Financial Recordkeeping Basics",
@@ -151,7 +151,7 @@ export const initialPortfolioData = {
         "Canva AI",
         "Google Workspace (Docs, Sheets, Slides)",
         "Microsoft 365 (Word, Excel, PowerPoint)",
-        "Trello",
+        "Trello & Gantt Charts",
         "Zoom & Google Meet"
       ]
     },

@@ -72,14 +72,14 @@ export default function Hero({ profile, certCount, onOpenResumeModal }) {
             </div>
           </div>
 
-          {/* Profile Card with Profile Picture Placeholder */}
+          {/* Profile Card with Profile Picture */}
           <div class="hero-card">
             <div class="hero-avatar-wrapper">
               {profile.avatarUrl ? (
                 <img
                   src={profile.avatarUrl}
-                  alt="Elijah Exconde Profile Placeholder"
-                  style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                  alt={profile.name}
+                  style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', display: 'block' }}
                 />
               ) : (
                 <div class="hero-avatar">
@@ -91,11 +91,7 @@ export default function Hero({ profile, certCount, onOpenResumeModal }) {
             <h2 class="hero-card-name">{profile.name}</h2>
             <p class="hero-card-title">Freelance Worker</p>
 
-            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', background: 'var(--bg-primary)', padding: '0.35rem 0.6rem', borderRadius: '4px', margin: '0.5rem 0 1rem', display: 'inline-block' }}>
-              📷 Profile Picture Placeholder
-            </div>
-
-            <div class="social-links">
+            <div class="social-links" style={{ marginTop: '1.25rem' }}>
               {profile.linkedin && (
                 <a href={profile.linkedin} target="_blank" rel="noreferrer" class="icon-btn" title="LinkedIn Profile">
                   <Linkedin size={18} />

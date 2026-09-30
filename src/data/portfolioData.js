@@ -3,7 +3,7 @@
  * Authentic Information & Accredited Credentials for Elijah Exconde
  */
 
-const STORAGE_KEY = 'my_react_portfolio_data_v7';
+const STORAGE_KEY = 'my_react_portfolio_data_v8';
 
 export const initialPortfolioData = {
   profile: {
@@ -16,7 +16,7 @@ export const initialPortfolioData = {
     linkedin: "https://www.linkedin.com/in/elijah-exconde-02a83a430",
     resumeImagePath: "images/resumeimages/Exconde_Elijah_P.png",
     resumePdfPath: "pdf/Exconde_Elijah_P_resume.pdf",
-    avatarUrl: "" // Profile Picture Placeholder
+    avatarUrl: "images/profilepic/pic1x1.jpg"
   },
   certifications: [
     {

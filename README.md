@@ -1,96 +1,43 @@
-# Modern Developer & Certifications Portfolio Website
+# Elijah Exconde — Certified Virtual Assistant & Admin Specialist (React + Vite)
 
-A responsive, feature-rich portfolio website template designed for software engineers, cloud architects, developers, and IT professionals to showcase verified certifications, technical skills, projects, and career background.
-
-![Portfolio Preview](https://img.shields.io/badge/Status-Active-brightgreen)
-![License](https://img.shields.io/badge/License-MIT-blue)
+A modern, light-themed portfolio web application for **Elijah Exconde** designed to showcase certified industry credentials, administrative capabilities, and remote work readiness to HR managers and recruiters.
 
 ---
 
-## 🌟 Key Features
+## 🚀 Quick Start
 
-1. **Certifications & Credentials Showcase**:
-   - Filter by categories: *Cloud & Infrastructure*, *Web Development*, *Cybersecurity*, *Data & AI*, *Other*.
-   - Instant search bar for filtering certifications by title, issuer, or validated skills.
-   - Verified credential details modal with online verification link integration.
-   - Interactive modal form to add, edit, or delete certification cards dynamically.
+To start the local development server:
 
-2. **Live Edit & Local Persistence**:
-   - Integrated **Edit Mode** toolbar allows editing profile text (name, bio, titles) directly on the web page.
-   - All changes persist automatically in browser `localStorage`.
-
-3. **Data Export & Import (JSON Template)**:
-   - Export your entire portfolio data as a standardized `portfolio-data.json` file.
-   - Copy JSON to clipboard or paste custom JSON to instantly import and update the site.
-
-4. **Modern UI & Accessible Architecture**:
-   - Built with native HTML `<dialog>` modals, CSS Grid / Flexbox, and CSS Custom Properties.
-   - Seamless **Dark & Light Mode** toggle with automatic icon updates.
-   - Fully responsive across Desktop, Tablet, and Mobile screens.
-
----
-
-## 📂 File Structure
-
-```
-my-portfolio/
-├── index.html              # Main HTML markup with semantic sections & native <dialog> elements
-├── css/
-│   └── styles.css          # Responsive CSS with themes, glassmorphism, grid layout, & custom properties
-├── js/
-│   ├── data.js             # Initial state definitions, LocalStorage sync, reset & export logic
-│   └── app.js              # Application controller, event handlers, rendering, & modal triggers
-├── portfolio-data.json     # Sample/template dataset for easy editing & JSON imports
-└── README.md               # Quick start & documentation guide
-```
-
----
-
-## 🚀 How to Run & Use
-
-### Option 1: Direct Browser Launch
-Simply open `index.html` in any web browser (Chrome, Edge, Firefox, Safari). No build tools or Node.js required!
-
-### Option 2: Local Web Server (Recommended)
-Using any HTTP server (such as VS Code Live Server, Python `http.server`, or `npx serve`):
 ```bash
-# Example using Python:
-python -m http.server 8000
-
-# Or using npx serve:
-npx serve .
+npm run dev
 ```
-Open `http://localhost:8000` in your browser.
+
+Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 ---
 
-## 📝 How to Insert & Customize Your Information
+## ✨ Features & Highlights
 
-### Method A: Use the Interactive Web Interface
-1. **Add a Certification**: Click the **"+ Add Cert"** button in the header or section toolbar. Fill out the title, issuer, category, dates, credential ID, skills, and verification URL, then click **Save**.
-2. **Edit Profile Information**: Click **"Edit Mode: OFF"** on the floating bottom toolbar to toggle **ON**. Click directly on text (like your name or bio) to edit it. Toggle Edit Mode **OFF** to save your changes!
-3. **Delete/Edit a Card**: When Edit Mode is active, hover over any certification card to see the Edit (pencil) and Delete (trash) icons.
+1. **Certified Credentials & Badges**:
+   - Certified HubSpot Email Specialist
+   - Certified Salesforce Integrator
+   - Certified Bookkeeper (OpenLearn)
+   - Certified Psychological First Aid Trained (NCTSN)
+   - Certified 80+ WPM Typing Data Entry Specialist
 
-### Method B: Edit `portfolio-data.json` & Import
-1. Open `portfolio-data.json` in your code editor.
-2. Edit the `profile`, `certifications`, `skills`, `projects`, or `experience` arrays.
-3. On the website, click **"Export/Import Data"** in the hero section or toolbar.
-4. Paste your modified JSON and click **Import JSON**.
+2. **Availability & Remote Readiness**:
+   - **Available Hours**: 08:00AM - 05:00AM EST (US & UK time zones)
+   - **Hardware**: Personal Laptop (Ryzen 5, RTX 2050, 16GB RAM) + Noise-cancelling headset
+   - **Internet**: Primary PLDT Fiber 50 Mbps + Backup High-Speed Hotspot
 
----
-
-## 🛠️ Customization Options
-
-### Badge Icons
-When adding certifications, choose from popular feather icons:
-- `award` (Medal / General)
-- `cloud` (AWS, GCP, Azure)
-- `code` (Web & Software Development)
-- `shield` (Security & Compliance)
-- `database` (Data & Databases)
-- `cpu` (Systems & Hardware)
+3. **Resume PDF Integration (`Exconde_Elijah_P_resume.pdf`)**:
+   - Modal previewer and direct PDF download link.
 
 ---
 
-## 📄 License
-MIT License. Free to customize, expand, and host for personal portfolios or commercial usage!
+## 📬 Contact Details
+
+- **Email**: exconde.elijah@gmail.com
+- **Phone**: +63 976 259 1824
+- **LinkedIn**: [linkedin.com/in/elijah-exconde-02a83a430](https://www.linkedin.com/in/elijah-exconde-02a83a430)
+- **Resume File**: `pdf/Exconde_Elijah_P_resume.pdf`

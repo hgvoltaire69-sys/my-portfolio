@@ -1,38 +1,47 @@
 import React from 'react';
 import { CheckCircle, Shield, Mail, User, Linkedin, Phone, FileText, Download, Award, Zap, Clock } from 'lucide-react';
 
-export default function Hero({ profile, certCount, onOpenResumeModal }) {
+export default function Hero({ profile, certCount, onOpenResumeModal, onNavigateSection }) {
   return (
-    <section class="hero-section" id="about">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-content">
-            <div class="hero-tag">
+    <section className="hero-section" id="about">
+      <div className="container">
+        <div className="hero-grid">
+          <div className="hero-content">
+            <div className="hero-tag">
               <CheckCircle size={15} />
               <span>Aspiring Virtual Assistant & AI Ready</span>
             </div>
 
-            <h1 class="hero-title">
-              Hi, I'm <span class="gradient-text">{profile.name}</span>
+            <h1 className="hero-title">
+              Hi, I'm <span className="gradient-text">{profile.name}</span>
             </h1>
-            <div class="hero-subtitle-role">Aspiring Virtual Assistant</div>
+            <div className="hero-subtitle-role">Aspiring Virtual Assistant</div>
 
-            <p class="hero-bio">
+            <p className="hero-bio">
               {profile.bio}
             </p>
 
-            <div class="hero-cta">
-              <button onClick={onOpenResumeModal} class="btn-primary">
+            <div className="hero-cta">
+              <button onClick={onOpenResumeModal} className="btn-primary">
                 <FileText size={18} />
                 <span>Preview Resume</span>
               </button>
 
-              <a href={profile.resumePdfPath} download="Exconde_Elijah_P_resume.pdf" class="btn-secondary">
+              <a href={profile.resumePdfPath} download="Exconde_Elijah_P_resume.pdf" className="btn-secondary">
                 <Download size={18} />
                 <span>Download Resume PDF</span>
               </a>
 
-              <a href="#certifications" class="btn-secondary">
+              <a
+                href="#portfolio-showcase"
+                onClick={(e) => {
+                  if (onNavigateSection) {
+                    e.preventDefault();
+                    onNavigateSection('certifications');
+                  }
+                }}
+                className="btn-secondary"
+              >
                 <Shield size={18} />
                 <span>View Certifications</span>
               </a>

@@ -3,7 +3,7 @@ import { CheckSquare } from 'lucide-react';
 
 export default function Skills({ skills }) {
   return (
-    <section class="section" id="skills" style={{ background: 'rgba(0, 0, 0, 0.15)' }}>
+    <section className="section" id="skills">
       <div class="container">
         <div class="section-header">
           <div class="section-subtitle">Technical Proficiency</div>

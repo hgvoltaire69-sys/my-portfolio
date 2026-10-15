@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { loadPortfolioData } from './data/portfolioData';
 
 import Header from './components/Header';
-import Hero from './components/Hero';
 import SectionCarousel from './components/SectionCarousel';
 import CertDetailModal from './components/CertDetailModal';
 import ResumeModal from './components/ResumeModal';
@@ -16,28 +15,13 @@ export default function App() {
 
   const handleNavigateSection = (sectionName) => {
     if (sectionName === 'about') {
-      const heroEl = document.getElementById('about');
-      if (heroEl) {
-        heroEl.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else if (sectionName === 'certifications') {
       setActiveSlide(0);
-      const el = document.getElementById('portfolio-showcase');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else if (sectionName === 'skills') {
+    } else if (sectionName === 'certifications') {
       setActiveSlide(1);
-      const el = document.getElementById('portfolio-showcase');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else if (sectionName === 'contact') {
+    } else if (sectionName === 'skills') {
       setActiveSlide(2);
-      const el = document.getElementById('portfolio-showcase');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
+    } else if (sectionName === 'contact') {
+      setActiveSlide(3);
     }
   };
 
@@ -45,24 +29,21 @@ export default function App() {
     <div className="app-root">
       <Header
         profile={portfolioData.profile}
-        onNavigateSection={handleNavigateSection}
-      />
-
-      <Hero
-        profile={portfolioData.profile}
-        certCount={portfolioData.certifications.length}
-        onOpenResumeModal={() => setIsResumeModalOpen(true)}
-        onNavigateSection={handleNavigateSection}
-      />
-
-      <SectionCarousel
         activeSlide={activeSlide}
-        setActiveSlide={setActiveSlide}
-        certifications={portfolioData.certifications}
-        skills={portfolioData.skills}
-        profile={portfolioData.profile}
-        onViewCertDetail={(cert) => setDetailCert(cert)}
+        onNavigateSection={handleNavigateSection}
       />
+
+      <main className="app-main-viewport">
+        <SectionCarousel
+          activeSlide={activeSlide}
+          setActiveSlide={setActiveSlide}
+          profile={portfolioData.profile}
+          certifications={portfolioData.certifications}
+          skills={portfolioData.skills}
+          onOpenResumeModal={() => setIsResumeModalOpen(true)}
+          onViewCertDetail={(cert) => setDetailCert(cert)}
+        />
+      </main>
 
       <Footer name={portfolioData.profile.name} />
 

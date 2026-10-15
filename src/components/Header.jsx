@@ -1,7 +1,7 @@
 import React from 'react';
 import { Award } from 'lucide-react';
 
-export default function Header({ profile, onNavigateSection }) {
+export default function Header({ profile, activeSlide, onNavigateSection }) {
   const handleClick = (e, target) => {
     if (onNavigateSection) {
       e.preventDefault();
@@ -17,12 +17,36 @@ export default function Header({ profile, onNavigateSection }) {
           <span>{profile.name}</span>
         </a>
 
-        {/* Clean Navigation Links */}
+        {/* Clean Navigation Links with Active State */}
         <nav className="nav-menu">
-          <a href="#about" onClick={(e) => handleClick(e, 'about')} className="nav-link">About</a>
-          <a href="#certifications" onClick={(e) => handleClick(e, 'certifications')} className="nav-link">Certifications</a>
-          <a href="#skills" onClick={(e) => handleClick(e, 'skills')} className="nav-link">Skills</a>
-          <a href="#contact" onClick={(e) => handleClick(e, 'contact')} className="nav-link">Contact</a>
+          <button
+            type="button"
+            onClick={(e) => handleClick(e, 'about')}
+            className={`nav-link ${activeSlide === 0 ? 'active' : ''}`}
+          >
+            About
+          </button>
+          <button
+            type="button"
+            onClick={(e) => handleClick(e, 'certifications')}
+            className={`nav-link ${activeSlide === 1 ? 'active' : ''}`}
+          >
+            Certifications
+          </button>
+          <button
+            type="button"
+            onClick={(e) => handleClick(e, 'skills')}
+            className={`nav-link ${activeSlide === 2 ? 'active' : ''}`}
+          >
+            Skills
+          </button>
+          <button
+            type="button"
+            onClick={(e) => handleClick(e, 'contact')}
+            className={`nav-link ${activeSlide === 3 ? 'active' : ''}`}
+          >
+            Contact
+          </button>
         </nav>
       </div>
     </header>

@@ -1,31 +1,40 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Award, CheckSquare, Mail, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useRef, useEffect, useCallback } from 'react';
+import { User, Award, CheckSquare, Mail, ChevronLeft, ChevronRight } from 'lucide-react';
+import Hero from './Hero';
 import Certifications from './Certifications';
 import Skills from './Skills';
 import Contact from './Contact';
 
 export const SECTIONS = [
   {
+    id: 'about',
+    title: 'About Me',
+    shortTitle: 'About',
+    desc: 'Profile, metrics & bio',
+    icon: User,
+    badge: 'Overview'
+  },
+  {
     id: 'certifications',
-    title: 'Certifications & Credentials',
+    title: 'Certifications',
     shortTitle: 'Certifications',
-    desc: 'Verified badges & accreditations',
+    desc: '7 verified badges & credentials',
     icon: Award,
     badge: '7 Badges'
   },
   {
     id: 'skills',
-    title: 'Skills & Technologies',
+    title: 'Skills & Tools',
     shortTitle: 'Skills',
     desc: 'Core tools & proficiencies',
     icon: CheckSquare,
-    badge: 'Competencies'
+    badge: 'Proficiencies'
   },
   {
     id: 'contact',
     title: 'Get In Touch',
     shortTitle: 'Contact',
-    desc: 'Inquiries & direct outreach',
+    desc: 'Direct email, phone & social',
     icon: Mail,
     badge: 'Connect'
   }
@@ -34,54 +43,51 @@ export const SECTIONS = [
 export default function SectionCarousel({
   activeSlide,
   setActiveSlide,
+  profile,
   certifications,
   skills,
-  profile,
+  onOpenResumeModal,
   onViewCertDetail
 }) {
-  const slideRefs = [useRef(null), useRef(null), useRef(null)];
-  const [viewportHeight, setViewportHeight] = useState('auto');
+  const slideRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
   const touchStartX = useRef(0);
   const touchStartY = useRef(0);
   const touchEndX = useRef(0);
   const touchEndY = useRef(0);
 
-  const goToSlide = useCallback((index, shouldScroll = true) => {
-    if (index < 0 || index >= SECTIONS.length) return;
-    setActiveSlide(index);
-
-    if (shouldScroll) {
-      const showcaseEl = document.getElementById('portfolio-showcase');
-      if (showcaseEl) {
-        showcaseEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const goToSlide = useCallback((index) => {
+    if (index >= 0 && index < SECTIONS.length) {
+      setActiveSlide(index);
+      // Reset scroll position of target slide to top
+      if (slideRefs[index]?.current) {
+        slideRefs[index].current.scrollTop = 0;
       }
     }
   }, [setActiveSlide]);
 
-  // Dynamically update viewport height using ResizeObserver to adapt to active slide content
-  useEffect(() => {
-    const activeEl = slideRefs[activeSlide]?.current;
-    if (!activeEl) return;
+  const goToSlideById = useCallback((id) => {
+    const idx = SECTIONS.findIndex((s) => s.id === id);
+    if (idx !== -1) {
+      goToSlide(idx);
+    }
+  }, [goToSlide]);
 
-    const updateHeight = () => {
-      if (activeEl) {
-        setViewportHeight(activeEl.offsetHeight);
+  // Keyboard navigation (ArrowLeft / ArrowRight) when not typing in inputs
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const activeTag = document.activeElement?.tagName?.toLowerCase();
+      if (activeTag === 'input' || activeTag === 'textarea') return;
+
+      if (e.key === 'ArrowRight') {
+        goToSlide(Math.min(activeSlide + 1, SECTIONS.length - 1));
+      } else if (e.key === 'ArrowLeft') {
+        goToSlide(Math.max(activeSlide - 1, 0));
       }
     };
 
-    updateHeight();
-
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.target === activeEl) {
-          setViewportHeight(entry.target.offsetHeight);
-        }
-      }
-    });
-
-    resizeObserver.observe(activeEl);
-    return () => resizeObserver.disconnect();
-  }, [activeSlide]);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeSlide, goToSlide]);
 
   // Touch Swipe Handlers for mobile & tablet
   const handleTouchStart = (e) => {
@@ -98,63 +104,58 @@ export default function SectionCarousel({
     const diffX = touchStartX.current - touchEndX.current;
     const diffY = touchStartY.current - touchEndY.current;
 
-    // Only swipe if horizontal motion exceeds vertical motion by a safe threshold
-    if (Math.abs(diffX) > 60 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+    if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
       if (diffX > 0 && activeSlide < SECTIONS.length - 1) {
         // Swipe left -> Next slide
-        goToSlide(activeSlide + 1, false);
+        goToSlide(activeSlide + 1);
       } else if (diffX < 0 && activeSlide > 0) {
         // Swipe right -> Prev slide
-        goToSlide(activeSlide - 1, false);
+        goToSlide(activeSlide - 1);
       }
     }
   };
 
   return (
-    <div id="portfolio-showcase" className="showcase-container">
-      {/* Top Section Navigator Buttons */}
-      <div className="container showcase-nav-wrapper">
-        <div className="showcase-nav-header">
-          <span className="showcase-nav-eyebrow">PORTFOLIO EXPLORER</span>
-          <h2 className="showcase-nav-title">Select a Section to View</h2>
-        </div>
+    <div className="showcase-container" id="portfolio-showcase">
+      {/* Top Compact Section Selector Bar */}
+      <div className="showcase-nav-wrapper">
+        <div className="container">
+          <div className="showcase-buttons-grid" role="tablist" aria-label="Portfolio Sections">
+            {SECTIONS.map((sec, idx) => {
+              const Icon = sec.icon;
+              const isActive = activeSlide === idx;
 
-        <div className="showcase-buttons-grid" role="tablist" aria-label="Portfolio Sections">
-          {SECTIONS.map((sec, idx) => {
-            const Icon = sec.icon;
-            const isActive = activeSlide === idx;
-
-            return (
-              <button
-                key={sec.id}
-                role="tab"
-                aria-selected={isActive}
-                aria-controls={`slide-${sec.id}`}
-                id={`tab-${sec.id}`}
-                className={`showcase-nav-btn ${isActive ? 'active' : ''}`}
-                onClick={() => goToSlide(idx, true)}
-              >
-                <div className="showcase-btn-icon-wrapper">
-                  <Icon size={20} />
-                </div>
-                <div className="showcase-btn-text">
-                  <div className="showcase-btn-title-row">
-                    <span className="showcase-btn-title">{sec.title}</span>
-                    <span className="showcase-btn-badge">{sec.badge}</span>
+              return (
+                <button
+                  key={sec.id}
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls={`slide-${sec.id}`}
+                  id={`tab-${sec.id}`}
+                  className={`showcase-nav-btn ${isActive ? 'active' : ''}`}
+                  onClick={() => goToSlide(idx)}
+                >
+                  <div className="showcase-btn-icon-wrapper">
+                    <Icon size={18} />
                   </div>
-                  <span className="showcase-btn-desc">{sec.desc}</span>
-                </div>
-                {isActive && <div className="showcase-btn-active-bar" />}
-              </button>
-            );
-          })}
+                  <div className="showcase-btn-text">
+                    <div className="showcase-btn-title-row">
+                      <span className="showcase-btn-title">{sec.title}</span>
+                      <span className="showcase-btn-badge">{sec.badge}</span>
+                    </div>
+                    <span className="showcase-btn-desc">{sec.desc}</span>
+                  </div>
+                  {isActive && <div className="showcase-btn-active-bar" />}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
-      {/* Carousel Track & Viewport */}
+      {/* Main Viewport-Fitted Carousel Track */}
       <div
         className="carousel-viewport"
-        style={{ height: typeof viewportHeight === 'number' ? `${viewportHeight}px` : 'auto' }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -166,9 +167,26 @@ export default function SectionCarousel({
             width: `${SECTIONS.length * 100}%`
           }}
         >
-          {/* Slide 0: Certifications */}
+          {/* Slide 0: Hero / About */}
           <div
             ref={slideRefs[0]}
+            id="slide-about"
+            role="tabpanel"
+            aria-labelledby="tab-about"
+            className="carousel-slide"
+            style={{ width: `${100 / SECTIONS.length}%` }}
+          >
+            <Hero
+              profile={profile}
+              certCount={certifications.length}
+              onOpenResumeModal={onOpenResumeModal}
+              onNavigateSection={goToSlideById}
+            />
+          </div>
+
+          {/* Slide 1: Certifications */}
+          <div
+            ref={slideRefs[1]}
             id="slide-certifications"
             role="tabpanel"
             aria-labelledby="tab-certifications"
@@ -181,9 +199,9 @@ export default function SectionCarousel({
             />
           </div>
 
-          {/* Slide 1: Skills */}
+          {/* Slide 2: Skills */}
           <div
-            ref={slideRefs[1]}
+            ref={slideRefs[2]}
             id="slide-skills"
             role="tabpanel"
             aria-labelledby="tab-skills"
@@ -193,9 +211,9 @@ export default function SectionCarousel({
             <Skills skills={skills} />
           </div>
 
-          {/* Slide 2: Contact */}
+          {/* Slide 3: Contact */}
           <div
-            ref={slideRefs[2]}
+            ref={slideRefs[3]}
             id="slide-contact"
             role="tabpanel"
             aria-labelledby="tab-contact"
@@ -207,17 +225,17 @@ export default function SectionCarousel({
         </div>
       </div>
 
-      {/* Bottom Pagination Dots & Arrows Controls */}
-      <div className="container showcase-bottom-controls">
-        <div className="carousel-controls-bar">
+      {/* Bottom Compact Pagination Bar & Controls */}
+      <div className="showcase-bottom-controls">
+        <div className="container showcase-bottom-inner">
           {/* Previous Button */}
           <button
-            onClick={() => goToSlide(activeSlide - 1, true)}
+            onClick={() => goToSlide(activeSlide - 1)}
             disabled={activeSlide === 0}
             className="carousel-arrow-btn prev-btn"
             aria-label="Previous Section"
           >
-            <ChevronLeft size={18} />
+            <ChevronLeft size={16} />
             <span className="carousel-arrow-label">
               {activeSlide > 0 ? SECTIONS[activeSlide - 1].shortTitle : 'Start'}
             </span>
@@ -230,7 +248,7 @@ export default function SectionCarousel({
               return (
                 <button
                   key={sec.id}
-                  onClick={() => goToSlide(idx, true)}
+                  onClick={() => goToSlide(idx)}
                   className={`carousel-dot ${isActive ? 'active' : ''}`}
                   aria-label={`Go to ${sec.title}`}
                   title={sec.title}
@@ -243,7 +261,7 @@ export default function SectionCarousel({
 
           {/* Next Button */}
           <button
-            onClick={() => goToSlide(activeSlide + 1, true)}
+            onClick={() => goToSlide(activeSlide + 1)}
             disabled={activeSlide === SECTIONS.length - 1}
             className="carousel-arrow-btn next-btn"
             aria-label="Next Section"
@@ -251,12 +269,8 @@ export default function SectionCarousel({
             <span className="carousel-arrow-label">
               {activeSlide < SECTIONS.length - 1 ? SECTIONS[activeSlide + 1].shortTitle : 'End'}
             </span>
-            <ChevronRight size={18} />
+            <ChevronRight size={16} />
           </button>
-        </div>
-
-        <div className="carousel-page-indicator">
-          Section <strong>{activeSlide + 1}</strong> of <strong>{SECTIONS.length}</strong>: {SECTIONS[activeSlide].title}
         </div>
       </div>
     </div>

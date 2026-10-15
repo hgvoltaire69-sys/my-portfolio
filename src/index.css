@@ -509,6 +509,9 @@ button {
   font-weight: 700;
   text-transform: uppercase;
   color: var(--accent-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cert-title {
@@ -1029,13 +1032,6 @@ button {
   .contact-grid {
     grid-template-columns: 1fr;
   }
-  .cert-controls-minimal {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .cert-search-minimal {
-    width: 100%;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1055,6 +1051,37 @@ button {
   }
   .hero-title {
     font-size: 2.15rem;
+  }
+
+  /* Touch-friendly Horizontal Scroll Category Filter Bar on Mobile */
+  .cert-controls-minimal {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .filter-pills-minimal {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.25rem 0.25rem 0.5rem 0.25rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .filter-pills-minimal::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+
+  .pill-filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
   }
   
   /* Hide Desktop Grid on Mobile & Show Mobile Tappable Accordion */

@@ -9,13 +9,13 @@ export default function Hero({ profile, certCount, onOpenResumeModal }) {
           <div class="hero-content">
             <div class="hero-tag">
               <CheckCircle size={15} />
-              <span>Accredited Virtual Assistant & AI Ready</span>
+              <span>Aspiring Virtual Assistant & AI Ready</span>
             </div>
 
             <h1 class="hero-title">
               Hi, I'm <span class="gradient-text">{profile.name}</span>
             </h1>
-            <div class="hero-subtitle-role">Freelance Worker</div>
+            <div class="hero-subtitle-role">Aspiring Virtual Assistant</div>
 
             <p class="hero-bio">
               {profile.bio}
@@ -89,7 +89,7 @@ export default function Hero({ profile, certCount, onOpenResumeModal }) {
             </div>
 
             <h2 class="hero-card-name">{profile.name}</h2>
-            <p class="hero-card-title">Freelance Worker</p>
+            <p class="hero-card-title">Aspiring Virtual Assistant</p>
 
             <div class="social-links" style={{ marginTop: '1.25rem' }}>
               {profile.linkedin && (

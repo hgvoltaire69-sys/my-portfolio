@@ -58,7 +58,6 @@ export default function SectionCarousel({
   const goToSlide = useCallback((index) => {
     if (index >= 0 && index < SECTIONS.length) {
       setActiveSlide(index);
-      // Reset scroll position of target slide to top
       if (slideRefs[index]?.current) {
         slideRefs[index].current.scrollTop = 0;
       }
@@ -153,13 +152,36 @@ export default function SectionCarousel({
         </div>
       </div>
 
-      {/* Main Viewport-Fitted Carousel Track */}
+      {/* Main Viewport-Fitted Carousel Track with Big Reactive Floating Side Arrows */}
       <div
         className="carousel-viewport"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
+        {/* Big Reactive Side Navigation Arrows */}
+        <button
+          type="button"
+          onClick={() => goToSlide(activeSlide - 1)}
+          disabled={activeSlide === 0}
+          className="carousel-side-arrow left-arrow"
+          aria-label="Previous Section"
+          title={activeSlide > 0 ? `Previous: ${SECTIONS[activeSlide - 1].shortTitle}` : 'At Beginning'}
+        >
+          <ChevronLeft size={36} strokeWidth={2.2} />
+        </button>
+
+        <button
+          type="button"
+          onClick={() => goToSlide(activeSlide + 1)}
+          disabled={activeSlide === SECTIONS.length - 1}
+          className="carousel-side-arrow right-arrow"
+          aria-label="Next Section"
+          title={activeSlide < SECTIONS.length - 1 ? `Next: ${SECTIONS[activeSlide + 1].shortTitle}` : 'At End'}
+        >
+          <ChevronRight size={36} strokeWidth={2.2} />
+        </button>
+
         <div
           className="carousel-track"
           style={{
@@ -167,21 +189,23 @@ export default function SectionCarousel({
             width: `${SECTIONS.length * 100}%`
           }}
         >
-          {/* Slide 0: Hero / About */}
+          {/* Slide 0: Hero / About (Centered Vertically & Horizontally) */}
           <div
             ref={slideRefs[0]}
             id="slide-about"
             role="tabpanel"
             aria-labelledby="tab-about"
-            className="carousel-slide"
+            className="carousel-slide carousel-slide-about"
             style={{ width: `${100 / SECTIONS.length}%` }}
           >
-            <Hero
-              profile={profile}
-              certCount={certifications.length}
-              onOpenResumeModal={onOpenResumeModal}
-              onNavigateSection={goToSlideById}
-            />
+            <div className="carousel-slide-inner-centered">
+              <Hero
+                profile={profile}
+                certCount={certifications.length}
+                onOpenResumeModal={onOpenResumeModal}
+                onNavigateSection={goToSlideById}
+              />
+            </div>
           </div>
 
           {/* Slide 1: Certifications */}
@@ -225,23 +249,14 @@ export default function SectionCarousel({
         </div>
       </div>
 
-      {/* Bottom Compact Pagination Bar & Controls */}
+      {/* Bottom Compact Pagination Bar with Stable, Non-Jumping Dots */}
       <div className="showcase-bottom-controls">
         <div className="container showcase-bottom-inner">
-          {/* Previous Button */}
-          <button
-            onClick={() => goToSlide(activeSlide - 1)}
-            disabled={activeSlide === 0}
-            className="carousel-arrow-btn prev-btn"
-            aria-label="Previous Section"
-          >
-            <ChevronLeft size={16} />
-            <span className="carousel-arrow-label">
-              {activeSlide > 0 ? SECTIONS[activeSlide - 1].shortTitle : 'Start'}
-            </span>
-          </button>
+          <div className="carousel-page-indicator">
+            Section <strong>{activeSlide + 1}</strong> of <strong>{SECTIONS.length}</strong>: {SECTIONS[activeSlide].title}
+          </div>
 
-          {/* Pagination Indicator Dots */}
+          {/* Stationary-Anchored Pagination Indicator Dots */}
           <div className="carousel-dots-group" role="tablist" aria-label="Slide Pagination">
             {SECTIONS.map((sec, idx) => {
               const isActive = activeSlide === idx;
@@ -249,28 +264,19 @@ export default function SectionCarousel({
                 <button
                   key={sec.id}
                   onClick={() => goToSlide(idx)}
-                  className={`carousel-dot ${isActive ? 'active' : ''}`}
+                  className={`carousel-dot-slot ${isActive ? 'active' : ''}`}
                   aria-label={`Go to ${sec.title}`}
                   title={sec.title}
                 >
-                  {isActive && <span className="carousel-dot-pill-label">{sec.shortTitle}</span>}
+                  <span className="carousel-dot-pill" />
                 </button>
               );
             })}
           </div>
 
-          {/* Next Button */}
-          <button
-            onClick={() => goToSlide(activeSlide + 1)}
-            disabled={activeSlide === SECTIONS.length - 1}
-            className="carousel-arrow-btn next-btn"
-            aria-label="Next Section"
-          >
-            <span className="carousel-arrow-label">
-              {activeSlide < SECTIONS.length - 1 ? SECTIONS[activeSlide + 1].shortTitle : 'End'}
-            </span>
-            <ChevronRight size={16} />
-          </button>
+          <div className="carousel-shortcut-hint">
+            Tip: Use <kbd>←</kbd> <kbd>→</kbd> keys or swipe
+          </div>
         </div>
       </div>
     </div>

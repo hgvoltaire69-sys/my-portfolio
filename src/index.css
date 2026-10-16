@@ -1850,10 +1850,9 @@ button {
   margin-bottom: 0.35rem;
 }
 
-/* Bottom Controls */
 .showcase-bottom-controls {
   flex-shrink: 0;
-  padding: 0.45rem 1rem;
+  padding: 0.35rem 1rem;
   background: #ffffff;
   border-top: 1px solid var(--border-color);
   margin-top: 0;
@@ -1862,7 +1861,7 @@ button {
 .showcase-bottom-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -2111,42 +2110,6 @@ button {
 
 /* Tablet & Mobile Media Queries */
 @media (max-width: 868px) {
-  /* Scroll-responsive Top Bars */
-  .site-header {
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.25s ease,
-                max-height 0.35s ease,
-                height 0.35s ease,
-                border-color 0.25s ease;
-    will-change: transform, opacity;
-  }
-  .site-header.header-hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-    max-height: 0;
-    height: 0;
-    border-bottom-color: transparent;
-    pointer-events: none;
-  }
-
-  .showcase-nav-wrapper {
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.25s ease,
-                max-height 0.35s ease,
-                padding 0.35s ease,
-                border-color 0.25s ease;
-    will-change: transform, opacity;
-  }
-  .showcase-nav-wrapper.nav-hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-    max-height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    border-bottom-color: transparent;
-    pointer-events: none;
-  }
-
   /* Ex.2: Allow swipe scroll for the header tabs [about me, certifications, etc] */
   .showcase-buttons-grid {
     display: flex;
@@ -2197,29 +2160,23 @@ button {
 
   /* Compact Proportional About Me Slide */
   .carousel-slide-about {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     min-height: auto;
     height: 100%;
   }
   .carousel-slide-inner-centered {
     margin: 0;
-    padding: 0.25rem 0 1.5rem;
-    display: block;
+    padding: 0.25rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
   }
   .carousel-slide-about .hero-grid {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-  .carousel-slide .hero-card {
-    max-width: 300px;
-    margin: 0.75rem auto;
-    padding: 1.25rem 1.15rem;
-  }
-  .carousel-slide .hero-avatar-wrapper {
-    width: 95px;
-    height: 95px;
-    margin: 0 auto 0.75rem;
+    gap: 1rem;
   }
 }
 
@@ -2232,22 +2189,22 @@ button {
     height: 100%;
   }
   .carousel-slide {
-    padding: 0.5rem 0 2rem;
+    padding: 0.35rem 0 0.5rem;
   }
   .carousel-slide .container {
-    padding: 0 1.25rem;
+    padding: 0 1.15rem;
   }
   .carousel-side-arrow {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.35rem;
+    height: 2.35rem;
     opacity: 0.32;
     box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
   }
   .carousel-side-arrow.left-arrow {
-    left: 0.2rem;
+    left: 0.15rem;
   }
   .carousel-side-arrow.right-arrow {
-    right: 0.2rem;
+    right: 0.15rem;
   }
   .carousel-side-arrow:active:not(:disabled) {
     opacity: 0.85;
@@ -2256,43 +2213,120 @@ button {
     display: none;
   }
 
-  /* About Me Section on Mobile - Perfectly Proportioned & Not Too Large */
-  .hero-section {
-    padding: 0.25rem 0 0.75rem;
+  /* Bottom Dots Compact */
+  .showcase-bottom-controls {
+    padding: 0.25rem 0.5rem;
+  }
+
+  /* Compressed About Me Section on Mobile - Fits Perfectly Without Spilling Over */
+  .carousel-slide-about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .carousel-slide-about .hero-section {
+    padding: 0;
     background: transparent;
     border-bottom: none;
+    width: 100%;
   }
+  .carousel-slide-about .hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 100%;
+  }
+
+  /* Sleek Compact Profile Header on Mobile */
+  .carousel-slide .hero-card {
+    order: -1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 0.75rem;
+    max-width: 100%;
+    margin: 0 0 0.15rem;
+    padding: 0.45rem 0.65rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+  }
+  .carousel-slide .hero-avatar-wrapper {
+    width: 48px;
+    height: 48px;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  .hero-card-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.05rem;
+    line-height: 1.2;
+  }
+  .hero-card-title {
+    font-size: 0.72rem;
+    margin-bottom: 0.15rem;
+    color: var(--accent-secondary);
+  }
+  .hero-card-location,
+  .hero-card-availability {
+    font-size: 0.68rem;
+    display: inline-flex;
+    margin-right: 0.45rem;
+    margin-bottom: 0;
+  }
+  .carousel-slide .hero-card .social-links {
+    margin-top: 0.2rem !important;
+    gap: 0.3rem;
+  }
+  .carousel-slide .hero-card .icon-btn {
+    width: 25px;
+    height: 25px;
+  }
+  .carousel-slide .hero-card .icon-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Compact Typography on Mobile */
   .hero-tag {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.65rem;
-    margin-bottom: 0.45rem;
+    font-size: 0.68rem;
+    padding: 0.15rem 0.5rem;
+    margin-bottom: 0.2rem;
   }
   .hero-title {
-    font-size: 1.55rem;
-    line-height: 1.22;
-    margin-bottom: 0.35rem;
+    font-size: 1.25rem;
+    line-height: 1.18;
+    margin-bottom: 0.15rem;
   }
   .hero-subtitle-role {
-    font-size: 0.9rem;
-    margin-bottom: 0.45rem;
+    font-size: 0.78rem;
+    margin-bottom: 0.2rem;
   }
   .hero-bio {
-    font-size: 0.85rem;
-    line-height: 1.5;
-    margin-bottom: 0.75rem;
+    font-size: 0.78rem;
+    line-height: 1.38;
+    margin-bottom: 0.35rem;
   }
+
+  /* Compact CTA Row */
   .hero-cta {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
+    gap: 0.35rem;
+    margin-bottom: 0.35rem;
   }
   .hero-cta .btn-primary,
   .hero-cta .btn-secondary {
-    width: 100%;
+    width: auto;
+    flex: 1 1 auto;
     justify-content: center;
-    padding: 0.55rem 0.85rem;
-    font-size: 0.825rem;
+    padding: 0.35rem 0.6rem;
+    font-size: 0.725rem;
+    gap: 0.3rem;
   }
 
   /* Hero Graphic Stats on Mobile: Single X-Axis Line, swipe scrollable */
@@ -2300,10 +2334,10 @@ button {
     display: flex;
     overflow-x: auto;
     flex-wrap: nowrap;
-    gap: 0.45rem;
-    padding-top: 0.65rem;
-    padding-bottom: 0.25rem;
-    margin-bottom: 0.75rem;
+    gap: 0.35rem;
+    padding-top: 0.35rem;
+    padding-bottom: 0.15rem;
+    margin-bottom: 0;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-x pan-y;
@@ -2314,44 +2348,20 @@ button {
   }
   .hero-graphic-stats .graphic-stat-card {
     flex-shrink: 0;
-    min-width: 135px;
-    padding: 0.55rem 0.55rem;
+    min-width: 115px;
+    padding: 0.35rem 0.45rem;
+    gap: 0.4rem;
   }
   .hero-graphic-stats .graphic-stat-icon {
-    width: 1.85rem;
-    height: 1.85rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
   .hero-graphic-stats .graphic-stat-value {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
   }
   .hero-graphic-stats .graphic-stat-label {
-    font-size: 0.65rem;
-  }
-
-  .carousel-slide .hero-card {
-    max-width: 275px;
-    margin: 0.75rem auto 0.5rem;
-    padding: 1rem 0.95rem;
-  }
-  .carousel-slide .hero-avatar-wrapper {
-    width: 85px;
-    height: 85px;
-    margin: 0 auto 0.5rem;
-  }
-  .hero-card-name {
-    font-size: 1.1rem;
-    margin-bottom: 0.15rem;
-  }
-  .hero-card-title {
-    font-size: 0.78rem;
-    margin-bottom: 0.35rem;
-  }
-  .hero-card-location,
-  .hero-card-availability {
-    font-size: 0.725rem;
-    gap: 0.3rem;
-    margin-bottom: 0.25rem;
+    font-size: 0.58rem;
   }
 
   /* Ex.1: Skills Section on Mobile: Sleek Touch-Scrollable Ribbon */
@@ -2359,20 +2369,20 @@ button {
     display: flex;
     overflow-x: auto;
     flex-wrap: nowrap;
-    gap: 0.5rem;
-    padding: 0.45rem 0.25rem;
+    gap: 0.45rem;
+    padding: 0.35rem 0.2rem;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-x pan-y;
     scrollbar-width: none;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
   .skills-ats-strip::-webkit-scrollbar {
     display: none;
   }
   .ats-metric-pill {
     flex-shrink: 0;
-    min-width: 155px;
-    padding: 0.5rem 0.7rem;
+    min-width: 145px;
+    padding: 0.45rem 0.65rem;
   }
 
   /* Contact Section on Mobile */

@@ -48,80 +48,28 @@ export default function SectionCarousel({
   skills,
   skillsHighlights,
   remoteInfrastructure,
-  isBarsVisible = true,
-  onBarsVisibilityChange,
-  onFooterVisibilityChange,
   onOpenResumeModal,
   onViewCertDetail
 }) {
   const slideRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
-  const lastScrollPosRef = useRef({});
+  const navGridRef = useRef(null);
+  const tabButtonRefs = useRef([]);
 
-  const notifyBarsVisibility = useCallback((visible) => {
-    if (onBarsVisibilityChange) onBarsVisibilityChange(visible);
-    if (onFooterVisibilityChange) onFooterVisibilityChange(visible);
-  }, [onBarsVisibilityChange, onFooterVisibilityChange]);
-
-  // Hide top bars & footer on scrolling downwards, show on scrolling upwards
+  // Auto-scroll the top bar buttons so active section is always visible & centered
   useEffect(() => {
-    const handleScroll = (e) => {
-      const target = e.currentTarget;
-      const currentScrollTop = target.scrollTop;
-      const prev = lastScrollPosRef.current[activeSlide] ?? 0;
-      const diff = currentScrollTop - prev;
-
-      if (Math.abs(diff) > 8) {
-        if (diff > 0 && currentScrollTop > 20) {
-          notifyBarsVisibility(false);
-        } else if (diff < 0) {
-          notifyBarsVisibility(true);
-        }
-        lastScrollPosRef.current[activeSlide] = currentScrollTop;
-      }
-
-      if (currentScrollTop <= 15) {
-        notifyBarsVisibility(true);
-      }
-    };
-
-    const currentSlideEl = slideRefs[activeSlide]?.current;
-    if (currentSlideEl) {
-      currentSlideEl.addEventListener('scroll', handleScroll, { passive: true });
+    const activeBtn = tabButtonRefs.current[activeSlide];
+    const grid = navGridRef.current;
+    if (activeBtn && grid) {
+      const btnLeft = activeBtn.offsetLeft;
+      const btnWidth = activeBtn.offsetWidth;
+      const gridWidth = grid.offsetWidth;
+      const targetScrollLeft = btnLeft - (gridWidth / 2) + (btnWidth / 2);
+      grid.scrollTo({
+        left: targetScrollLeft,
+        behavior: 'smooth'
+      });
     }
-
-    return () => {
-      if (currentSlideEl) {
-        currentSlideEl.removeEventListener('scroll', handleScroll);
-      }
-    };
-  }, [activeSlide, notifyBarsVisibility]);
-
-  // Global window scroll fallback
-  useEffect(() => {
-    let lastWinScroll = window.scrollY || 0;
-    const handleWinScroll = () => {
-      const current = window.scrollY || 0;
-      const diff = current - lastWinScroll;
-      if (Math.abs(diff) > 8) {
-        if (diff > 0 && current > 20) {
-          notifyBarsVisibility(false);
-        } else if (diff < 0) {
-          notifyBarsVisibility(true);
-        }
-        lastWinScroll = current;
-      }
-      if (current <= 15) {
-        notifyBarsVisibility(true);
-      }
-    };
-    window.addEventListener('scroll', handleWinScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleWinScroll);
-  }, [notifyBarsVisibility]);
-
-  // When changing slides, ensure top bars and footer are visible
-  useEffect(() => {
-    notifyBarsVisibility(true);
-  }, [activeSlide, notifyBarsVisibility]);
+  }, [activeSlide]);
 
   const goToSlide = useCallback((index) => {
     if (index >= 0 && index < SECTIONS.length) {
@@ -159,9 +107,9 @@ export default function SectionCarousel({
   return (
     <div className="showcase-container" id="portfolio-showcase">
       {/* Top Compact Section Selector Bar */}
-      <div className={`showcase-nav-wrapper ${!isBarsVisible ? 'nav-hidden' : ''}`} aria-hidden={!isBarsVisible}>
+      <div className="showcase-nav-wrapper">
         <div className="container">
-          <div className="showcase-buttons-grid" role="tablist" aria-label="Portfolio Sections">
+          <div className="showcase-buttons-grid" role="tablist" aria-label="Portfolio Sections" ref={navGridRef}>
             {SECTIONS.map((sec, idx) => {
               const Icon = sec.icon;
               const isActive = activeSlide === idx;
@@ -169,6 +117,7 @@ export default function SectionCarousel({
               return (
                 <button
                   key={sec.id}
+                  ref={(el) => (tabButtonRefs.current[idx] = el)}
                   role="tab"
                   aria-selected={isActive}
                   aria-controls={`slide-${sec.id}`}
@@ -301,10 +250,6 @@ export default function SectionCarousel({
       {/* Bottom Compact Pagination Bar with Stable, Non-Jumping Dots */}
       <div className="showcase-bottom-controls">
         <div className="container showcase-bottom-inner">
-          <div className="carousel-page-indicator">
-            Section <strong>{activeSlide + 1}</strong> of <strong>{SECTIONS.length}</strong>: {SECTIONS[activeSlide].title}
-          </div>
-
           {/* Stationary-Anchored Pagination Indicator Dots */}
           <div className="carousel-dots-group" role="tablist" aria-label="Slide Pagination">
             {SECTIONS.map((sec, idx) => {
@@ -321,10 +266,6 @@ export default function SectionCarousel({
                 </button>
               );
             })}
-          </div>
-
-          <div className="carousel-shortcut-hint">
-            Tip: Use <kbd>←</kbd> <kbd>→</kbd> keys or swipe
           </div>
         </div>
       </div>

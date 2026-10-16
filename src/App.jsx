@@ -5,17 +5,13 @@ import Header from './components/Header';
 import SectionCarousel from './components/SectionCarousel';
 import CertDetailModal from './components/CertDetailModal';
 import ResumeModal from './components/ResumeModal';
-import Footer from './components/Footer';
-
 export default function App() {
   const [portfolioData] = useState(() => loadPortfolioData());
   const [detailCert, setDetailCert] = useState(null);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [areBarsVisible, setAreBarsVisible] = useState(true);
 
   const handleNavigateSection = (sectionName) => {
-    setAreBarsVisible(true);
     if (sectionName === 'about') {
       setActiveSlide(0);
     } else if (sectionName === 'certifications') {
@@ -33,7 +29,6 @@ export default function App() {
         profile={portfolioData.profile}
         activeSlide={activeSlide}
         onNavigateSection={handleNavigateSection}
-        isVisible={areBarsVisible}
       />
 
       <main className="app-main-viewport">
@@ -45,14 +40,10 @@ export default function App() {
           skills={portfolioData.skills}
           skillsHighlights={portfolioData.skillsHighlights}
           remoteInfrastructure={portfolioData.remoteInfrastructure}
-          isBarsVisible={areBarsVisible}
-          onBarsVisibilityChange={setAreBarsVisible}
           onOpenResumeModal={() => setIsResumeModalOpen(true)}
           onViewCertDetail={(cert) => setDetailCert(cert)}
         />
       </main>
-
-      <Footer name={portfolioData.profile.name} isVisible={areBarsVisible} />
 
       {/* Modals */}
       <CertDetailModal

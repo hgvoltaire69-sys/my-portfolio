@@ -2256,13 +2256,15 @@ button {
     box-shadow: var(--shadow-sm);
   }
   .carousel-slide .hero-avatar-wrapper {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 0.35rem;
+    width: 84px;
+    height: 84px;
+    margin: 0 auto 0.45rem;
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
-    border: 2px solid var(--accent-primary);
+    padding: 3.5px;
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.22);
   }
   .hero-card-name {
     font-size: 1.05rem;

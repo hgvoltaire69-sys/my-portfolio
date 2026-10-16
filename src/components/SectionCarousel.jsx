@@ -48,18 +48,21 @@ export default function SectionCarousel({
   skills,
   skillsHighlights,
   remoteInfrastructure,
+  isBarsVisible = true,
+  onBarsVisibilityChange,
   onFooterVisibilityChange,
   onOpenResumeModal,
   onViewCertDetail
 }) {
   const slideRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
-  const touchStartX = useRef(0);
-  const touchStartY = useRef(0);
-  const touchEndX = useRef(0);
-  const touchEndY = useRef(0);
   const lastScrollPosRef = useRef({});
 
-  // Hide footer on scrolling downwards, show footer on scrolling upwards
+  const notifyBarsVisibility = useCallback((visible) => {
+    if (onBarsVisibilityChange) onBarsVisibilityChange(visible);
+    if (onFooterVisibilityChange) onFooterVisibilityChange(visible);
+  }, [onBarsVisibilityChange, onFooterVisibilityChange]);
+
+  // Hide top bars & footer on scrolling downwards, show on scrolling upwards
   useEffect(() => {
     const handleScroll = (e) => {
       const target = e.currentTarget;
@@ -69,15 +72,15 @@ export default function SectionCarousel({
 
       if (Math.abs(diff) > 8) {
         if (diff > 0 && currentScrollTop > 20) {
-          if (onFooterVisibilityChange) onFooterVisibilityChange(false);
+          notifyBarsVisibility(false);
         } else if (diff < 0) {
-          if (onFooterVisibilityChange) onFooterVisibilityChange(true);
+          notifyBarsVisibility(true);
         }
         lastScrollPosRef.current[activeSlide] = currentScrollTop;
       }
 
       if (currentScrollTop <= 15) {
-        if (onFooterVisibilityChange) onFooterVisibilityChange(true);
+        notifyBarsVisibility(true);
       }
     };
 
@@ -91,7 +94,7 @@ export default function SectionCarousel({
         currentSlideEl.removeEventListener('scroll', handleScroll);
       }
     };
-  }, [activeSlide, onFooterVisibilityChange]);
+  }, [activeSlide, notifyBarsVisibility]);
 
   // Global window scroll fallback
   useEffect(() => {
@@ -101,26 +104,24 @@ export default function SectionCarousel({
       const diff = current - lastWinScroll;
       if (Math.abs(diff) > 8) {
         if (diff > 0 && current > 20) {
-          if (onFooterVisibilityChange) onFooterVisibilityChange(false);
+          notifyBarsVisibility(false);
         } else if (diff < 0) {
-          if (onFooterVisibilityChange) onFooterVisibilityChange(true);
+          notifyBarsVisibility(true);
         }
         lastWinScroll = current;
       }
       if (current <= 15) {
-        if (onFooterVisibilityChange) onFooterVisibilityChange(true);
+        notifyBarsVisibility(true);
       }
     };
     window.addEventListener('scroll', handleWinScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleWinScroll);
-  }, [onFooterVisibilityChange]);
+  }, [notifyBarsVisibility]);
 
-  // When changing slides, ensure footer is visible
+  // When changing slides, ensure top bars and footer are visible
   useEffect(() => {
-    if (onFooterVisibilityChange) {
-      onFooterVisibilityChange(true);
-    }
-  }, [activeSlide, onFooterVisibilityChange]);
+    notifyBarsVisibility(true);
+  }, [activeSlide, notifyBarsVisibility]);
 
   const goToSlide = useCallback((index) => {
     if (index >= 0 && index < SECTIONS.length) {
@@ -155,36 +156,10 @@ export default function SectionCarousel({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [activeSlide, goToSlide]);
 
-  // Touch Swipe Handlers for mobile & tablet
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchMove = (e) => {
-    touchEndX.current = e.touches[0].clientX;
-    touchEndY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchEnd = () => {
-    const diffX = touchStartX.current - touchEndX.current;
-    const diffY = touchStartY.current - touchEndY.current;
-
-    if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
-      if (diffX > 0 && activeSlide < SECTIONS.length - 1) {
-        // Swipe left -> Next slide
-        goToSlide(activeSlide + 1);
-      } else if (diffX < 0 && activeSlide > 0) {
-        // Swipe right -> Prev slide
-        goToSlide(activeSlide - 1);
-      }
-    }
-  };
-
   return (
     <div className="showcase-container" id="portfolio-showcase">
       {/* Top Compact Section Selector Bar */}
-      <div className="showcase-nav-wrapper">
+      <div className={`showcase-nav-wrapper ${!isBarsVisible ? 'nav-hidden' : ''}`} aria-hidden={!isBarsVisible}>
         <div className="container">
           <div className="showcase-buttons-grid" role="tablist" aria-label="Portfolio Sections">
             {SECTIONS.map((sec, idx) => {
@@ -228,12 +203,7 @@ export default function SectionCarousel({
       </div>
 
       {/* Main Viewport-Fitted Carousel Track with Big Reactive Floating Side Arrows */}
-      <div
-        className="carousel-viewport"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
+      <div className="carousel-viewport">
         {/* Big Reactive Side Navigation Arrows */}
         <button
           type="button"

@@ -2111,21 +2111,60 @@ button {
 
 /* Tablet & Mobile Media Queries */
 @media (max-width: 868px) {
+  /* Scroll-responsive Top Bars */
+  .site-header {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.25s ease,
+                max-height 0.35s ease,
+                height 0.35s ease,
+                border-color 0.25s ease;
+    will-change: transform, opacity;
+  }
+  .site-header.header-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    max-height: 0;
+    height: 0;
+    border-bottom-color: transparent;
+    pointer-events: none;
+  }
+
+  .showcase-nav-wrapper {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.25s ease,
+                max-height 0.35s ease,
+                padding 0.35s ease,
+                border-color 0.25s ease;
+    will-change: transform, opacity;
+  }
+  .showcase-nav-wrapper.nav-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom-color: transparent;
+    pointer-events: none;
+  }
+
+  /* Ex.2: Allow swipe scroll for the header tabs [about me, certifications, etc] */
   .showcase-buttons-grid {
     display: flex;
     overflow-x: auto;
+    flex-wrap: nowrap;
     scrollbar-width: none;
     gap: 0.45rem;
-    padding: 0.2rem 0;
+    padding: 0.2rem 0.25rem;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
   }
   .showcase-buttons-grid::-webkit-scrollbar {
     display: none;
   }
   .showcase-nav-btn {
     flex-shrink: 0;
-    padding: 0.5rem 0.75rem;
-    min-width: 120px;
+    padding: 0.45rem 0.7rem;
+    min-width: 110px;
   }
   .showcase-btn-desc {
     display: none;
@@ -2134,9 +2173,29 @@ button {
     display: none;
   }
   .showcase-btn-icon-wrapper {
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 1.6rem;
+    height: 1.6rem;
   }
+
+  /* Nav menu swipe-scrollable when overflowing on tablet/mobile */
+  .nav-menu {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    gap: 0.65rem;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
+  }
+  .nav-menu::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-link {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* Compact Proportional About Me Slide */
   .carousel-slide-about {
     display: block;
     min-height: auto;
@@ -2144,23 +2203,23 @@ button {
   }
   .carousel-slide-inner-centered {
     margin: 0;
-    padding: 0.5rem 0 2rem;
+    padding: 0.25rem 0 1.5rem;
     display: block;
     width: 100%;
   }
   .carousel-slide-about .hero-grid {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
+    gap: 1.25rem;
   }
   .carousel-slide .hero-card {
-    max-width: 350px;
-    margin: 1.25rem auto 1rem;
-    padding: 1.85rem 1.4rem;
+    max-width: 300px;
+    margin: 0.75rem auto;
+    padding: 1.25rem 1.15rem;
   }
   .carousel-slide .hero-avatar-wrapper {
-    width: 130px;
-    height: 130px;
-    margin: 0 auto 1rem;
+    width: 95px;
+    height: 95px;
+    margin: 0 auto 0.75rem;
   }
 }
 
@@ -2173,10 +2232,10 @@ button {
     height: 100%;
   }
   .carousel-slide {
-    padding: 0.75rem 0 2.5rem;
+    padding: 0.5rem 0 2rem;
   }
   .carousel-slide .container {
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
   }
   .carousel-side-arrow {
     width: 2.5rem;
@@ -2197,48 +2256,57 @@ button {
     display: none;
   }
 
-  /* Hero Section on Mobile - Healthy Breathing Room (No Compression) */
+  /* About Me Section on Mobile - Perfectly Proportioned & Not Too Large */
+  .hero-section {
+    padding: 0.25rem 0 0.75rem;
+    background: transparent;
+    border-bottom: none;
+  }
   .hero-tag {
-    margin-bottom: 0.75rem;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.65rem;
+    margin-bottom: 0.45rem;
   }
   .hero-title {
-    font-size: 2rem;
-    line-height: 1.25;
-    margin-bottom: 0.5rem;
+    font-size: 1.55rem;
+    line-height: 1.22;
+    margin-bottom: 0.35rem;
   }
   .hero-subtitle-role {
-    font-size: 1.05rem;
-    margin-bottom: 0.85rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.45rem;
   }
   .hero-bio {
-    font-size: 0.925rem;
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
   }
   .hero-cta {
     flex-direction: column;
     width: 100%;
-    gap: 0.75rem;
-    margin-bottom: 1.35rem;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
   }
   .hero-cta .btn-primary,
   .hero-cta .btn-secondary {
     width: 100%;
     justify-content: center;
-    padding: 0.8rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.825rem;
   }
-  /* Hero Graphic Stats on Mobile: Single X-Axis Line */
+
+  /* Hero Graphic Stats on Mobile: Single X-Axis Line, swipe scrollable */
   .hero-graphic-stats {
     display: flex;
     overflow-x: auto;
     flex-wrap: nowrap;
-    gap: 0.5rem;
-    padding-top: 1.25rem;
+    gap: 0.45rem;
+    padding-top: 0.65rem;
     padding-bottom: 0.25rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.75rem;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
     width: 100%;
   }
   .hero-graphic-stats::-webkit-scrollbar {
@@ -2246,11 +2314,47 @@ button {
   }
   .hero-graphic-stats .graphic-stat-card {
     flex-shrink: 0;
-    min-width: 155px;
-    padding: 0.75rem 0.65rem;
+    min-width: 135px;
+    padding: 0.55rem 0.55rem;
+  }
+  .hero-graphic-stats .graphic-stat-icon {
+    width: 1.85rem;
+    height: 1.85rem;
+  }
+  .hero-graphic-stats .graphic-stat-value {
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .hero-graphic-stats .graphic-stat-label {
+    font-size: 0.65rem;
   }
 
-  /* Skills Section on Mobile: Sleek Touch-Scrollable Ribbon */
+  .carousel-slide .hero-card {
+    max-width: 275px;
+    margin: 0.75rem auto 0.5rem;
+    padding: 1rem 0.95rem;
+  }
+  .carousel-slide .hero-avatar-wrapper {
+    width: 85px;
+    height: 85px;
+    margin: 0 auto 0.5rem;
+  }
+  .hero-card-name {
+    font-size: 1.1rem;
+    margin-bottom: 0.15rem;
+  }
+  .hero-card-title {
+    font-size: 0.78rem;
+    margin-bottom: 0.35rem;
+  }
+  .hero-card-location,
+  .hero-card-availability {
+    font-size: 0.725rem;
+    gap: 0.3rem;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Ex.1: Skills Section on Mobile: Sleek Touch-Scrollable Ribbon */
   .skills-ats-strip {
     display: flex;
     overflow-x: auto;
@@ -2258,6 +2362,7 @@ button {
     gap: 0.5rem;
     padding: 0.45rem 0.25rem;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
     scrollbar-width: none;
     margin-bottom: 1rem;
   }
@@ -2266,8 +2371,8 @@ button {
   }
   .ats-metric-pill {
     flex-shrink: 0;
-    min-width: 165px;
-    padding: 0.55rem 0.75rem;
+    min-width: 155px;
+    padding: 0.5rem 0.7rem;
   }
 
   /* Contact Section on Mobile */

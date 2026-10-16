@@ -1,7 +1,7 @@
 import React from 'react';
 import { Award } from 'lucide-react';
 
-export default function Header({ profile, activeSlide, onNavigateSection }) {
+export default function Header({ profile, activeSlide, onNavigateSection, isVisible = true }) {
   const handleClick = (e, target) => {
     if (onNavigateSection) {
       e.preventDefault();
@@ -10,7 +10,7 @@ export default function Header({ profile, activeSlide, onNavigateSection }) {
   };
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${!isVisible ? 'header-hidden' : ''}`} aria-hidden={!isVisible}>
       <div className="container header-inner">
         <a href="#about" onClick={(e) => handleClick(e, 'about')} className="brand-logo">
           <Award size={22} />

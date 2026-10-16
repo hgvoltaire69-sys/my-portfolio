@@ -40,6 +40,8 @@ export default function App() {
           profile={portfolioData.profile}
           certifications={portfolioData.certifications}
           skills={portfolioData.skills}
+          skillsHighlights={portfolioData.skillsHighlights}
+          remoteInfrastructure={portfolioData.remoteInfrastructure}
           onOpenResumeModal={() => setIsResumeModalOpen(true)}
           onViewCertDetail={(cert) => setDetailCert(cert)}
         />

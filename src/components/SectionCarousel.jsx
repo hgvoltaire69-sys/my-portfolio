@@ -46,6 +46,8 @@ export default function SectionCarousel({
   profile,
   certifications,
   skills,
+  skillsHighlights,
+  remoteInfrastructure,
   onOpenResumeModal,
   onViewCertDetail
 }) {
@@ -240,7 +242,11 @@ export default function SectionCarousel({
             className="carousel-slide"
             style={{ width: `${100 / SECTIONS.length}%` }}
           >
-            <Skills skills={skills} />
+            <Skills
+              skills={skills}
+              skillsHighlights={skillsHighlights}
+              remoteInfrastructure={remoteInfrastructure}
+            />
           </div>
 
           {/* Slide 3: Contact */}

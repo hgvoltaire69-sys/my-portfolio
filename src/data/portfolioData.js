@@ -3,7 +3,7 @@
  * Authentic Information & Accredited Credentials for Elijah Exconde
  */
 
-const STORAGE_KEY = 'my_react_portfolio_data_v13';
+const STORAGE_KEY = 'my_react_portfolio_data_v14';
 
 export const initialPortfolioData = {
   profile: {
@@ -132,62 +132,132 @@ export const initialPortfolioData = {
       description: "Achieved Expert Typing Proficiency rating with 80+ WPM (Words Per Minute), 100% Precision Accuracy Rate, and 96% Stability Consistency."
     }
   ],
+  skillsHighlights: [
+    {
+      id: "metric-typing",
+      label: "Typing & Data Entry",
+      value: "105 WPM / 100% Precision",
+      subtext: "TypingTest.me Verified",
+      icon: "Zap"
+    },
+    {
+      id: "metric-english",
+      label: "English Proficiency",
+      value: "CEFR C1 Advanced",
+      subtext: "C2 Reading & Listening (EF SET)",
+      icon: "Globe"
+    },
+    {
+      id: "metric-crm",
+      label: "CRM & Pipelines",
+      value: "Salesforce & HubSpot",
+      subtext: "Accredited Integration & Sync",
+      icon: "Database"
+    },
+    {
+      id: "metric-ai",
+      label: "AI-Augmented Stack",
+      value: "ChatGPT, Claude & Gemini",
+      subtext: "Univ. of Helsinki Certified",
+      icon: "Sparkles"
+    },
+    {
+      id: "metric-schedule",
+      label: "Remote Availability",
+      value: "08:00 AM – 05:00 AM EST",
+      subtext: "US & UK Full Shift Ready",
+      icon: "Clock"
+    }
+  ],
   skills: [
     {
-      category: "Verified Credentials & Coursework",
+      id: "admin-operations",
+      category: "Executive & Administrative Operations",
+      subtitle: "Virtual Assistance, Workflow Coordination & Documentation",
+      icon: "Briefcase",
+      badge: "Core Support",
       items: [
-        "EF SET English C1 Advanced (C2 Reading & Listening)",
-        "NCTSN Psychological First Aid Trained",
-        "University of Helsinki AI Foundations",
-        "Salesforce CRM Integration Specialist",
-        "HubSpot Accredited Email Marketer",
-        "CBRE Project Management Simulation (Forage)",
-        "OpenLearn Bookkeeping & Accounting Coursework",
-        "105 WPM / 100% Accuracy Data Entry"
-      ]
-    },
-    {
-      category: "Administrative & Operations",
-      items: [
-        "Administrative Support",
+        "Executive & Virtual Assistance",
+        "Calendar Management & Meeting Scheduling",
+        "105 WPM / 100% Precision Data Entry",
+        "Email Management & Inbox Triage",
+        "Customer Service & Client Correspondence",
         "Project Task Tracking & Gantt Scheduling",
-        "Data Entry & Record Management",
-        "Calendar & Meeting Scheduling",
-        "Financial Recordkeeping Basics",
-        "Customer Service & Communication"
+        "Psychological First Aid & Crisis Handling"
       ]
     },
     {
-      category: "AI & Software Tools",
+      id: "crm-finance",
+      category: "CRM, Marketing & Business Systems",
+      subtitle: "Enterprise Platforms, Automation & Financial Recordkeeping",
+      icon: "Database",
+      badge: "Accredited Systems",
       items: [
-        "ChatGPT",
-        "Gemini",
-        "Claude",
-        "Canva AI",
-        "Google Workspace (Docs, Sheets, Slides)",
-        "Microsoft 365 (Word, Excel, PowerPoint)",
-        "Trello & Gantt Charts",
-        "Zoom & Google Meet"
+        "Salesforce CRM Integration & Data Sync",
+        "HubSpot Inbound Marketing & Automation",
+        "Email Campaign Deliverability & A/B Testing",
+        "Audience Segmentation & Lead Hygiene",
+        "Double-Entry Bookkeeping & Ledger Records",
+        "Financial Recordkeeping & Invoicing Basics",
+        "CBRE Project Management Simulation"
       ]
     },
     {
-      category: "Design & Content Production",
+      id: "ai-productivity",
+      category: "AI Tooling & Digital Productivity Stack",
+      subtitle: "Prompt Engineering, Cloud Platforms & Collaboration",
+      icon: "Sparkles",
+      badge: "AI & Productivity",
       items: [
-        "Award-Winning Video Editing (CapCut & Premiere Pro)",
-        "Adobe Photoshop",
-        "Canva Graphic Design",
-        "Social Media Content Management (Instagram, TikTok, X, Facebook)"
+        "Prompt Engineering (ChatGPT, Claude, Gemini)",
+        "Google Workspace (Docs, Sheets, Slides, Drive)",
+        "Microsoft 365 (Word, Excel, PowerPoint, Outlook)",
+        "Trello & Kanban Project Boards",
+        "Remote Conferencing (Zoom, Google Meet, Slack)",
+        "AI-Assisted Research & Documentation",
+        "University of Helsinki AI Foundations"
       ]
     },
     {
-      category: "Remote Work Readiness & Environment",
+      id: "creative-media",
+      category: "Creative Media & Digital Content",
+      subtitle: "Video Editing, Visual Design & Social Channel Management",
+      icon: "Palette",
+      badge: "Digital Production",
       items: [
-        "Available Hours: 08:00AM - 05:00AM EST",
-        "US & UK Time Zone Coverage",
-        "Primary PLDT Fiber 50 Mbps + Backup Hotspot",
-        "Personal Workstation (Ryzen 5, RTX 2050, 16GB RAM)",
-        "Noise-Cancelling Headset & Web Camera"
+        "Award-Winning Video Editing (Premiere Pro, CapCut)",
+        "Adobe Photoshop Graphic Design",
+        "Canva Pro Presentations & Marketing Collateral",
+        "Social Media Management (TikTok, IG, FB, X)",
+        "Short-Form Video Scripting & Formatting",
+        "Audio Enhancement & Subtitle Synchronization"
       ]
+    }
+  ],
+  remoteInfrastructure: [
+    {
+      icon: "Clock",
+      title: "Work Hours & Shift Coverage",
+      value: "08:00 AM – 05:00 AM EST",
+      detail: "Full overlap with US (Eastern & Pacific) and UK business hours"
+    },
+    {
+      icon: "Wifi",
+      title: "Network Connectivity & Redundancy",
+      value: "50 Mbps PLDT Fiber + Cellular Backup",
+      detail: "Zero-downtime dual-channel connection with mobile hotspot failover"
+    },
+    {
+      icon: "Laptop",
+      title: "Hardware Rig & Workstation",
+      value: "AMD Ryzen 5, NVIDIA RTX 2050, 16GB RAM",
+      detail: "High-performance dual-display setup for multitasking and heavy rendering"
+    },
+    {
+      icon: "Headphones",
+      title: "Audio/Video & Environment",
+      value: "Noise-Cancelling Headset + HD Webcam",
+      detail: "Crystal-clear communications in a dedicated, quiet home office environment"
     }
   ]
 };

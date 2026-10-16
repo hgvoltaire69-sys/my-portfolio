@@ -12,8 +12,10 @@ export default function App() {
   const [detailCert, setDetailCert] = useState(null);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isFooterVisible, setIsFooterVisible] = useState(true);
 
   const handleNavigateSection = (sectionName) => {
+    setIsFooterVisible(true);
     if (sectionName === 'about') {
       setActiveSlide(0);
     } else if (sectionName === 'certifications') {
@@ -42,12 +44,13 @@ export default function App() {
           skills={portfolioData.skills}
           skillsHighlights={portfolioData.skillsHighlights}
           remoteInfrastructure={portfolioData.remoteInfrastructure}
+          onFooterVisibilityChange={setIsFooterVisible}
           onOpenResumeModal={() => setIsResumeModalOpen(true)}
           onViewCertDetail={(cert) => setDetailCert(cert)}
         />
       </main>
 
-      <Footer name={portfolioData.profile.name} />
+      <Footer name={portfolioData.profile.name} isVisible={isFooterVisible} />
 
       {/* Modals */}
       <CertDetailModal

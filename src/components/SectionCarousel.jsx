@@ -48,6 +48,7 @@ export default function SectionCarousel({
   skills,
   skillsHighlights,
   remoteInfrastructure,
+  onFooterVisibilityChange,
   onOpenResumeModal,
   onViewCertDetail
 }) {
@@ -56,6 +57,70 @@ export default function SectionCarousel({
   const touchStartY = useRef(0);
   const touchEndX = useRef(0);
   const touchEndY = useRef(0);
+  const lastScrollPosRef = useRef({});
+
+  // Hide footer on scrolling downwards, show footer on scrolling upwards
+  useEffect(() => {
+    const handleScroll = (e) => {
+      const target = e.currentTarget;
+      const currentScrollTop = target.scrollTop;
+      const prev = lastScrollPosRef.current[activeSlide] ?? 0;
+      const diff = currentScrollTop - prev;
+
+      if (Math.abs(diff) > 8) {
+        if (diff > 0 && currentScrollTop > 20) {
+          if (onFooterVisibilityChange) onFooterVisibilityChange(false);
+        } else if (diff < 0) {
+          if (onFooterVisibilityChange) onFooterVisibilityChange(true);
+        }
+        lastScrollPosRef.current[activeSlide] = currentScrollTop;
+      }
+
+      if (currentScrollTop <= 15) {
+        if (onFooterVisibilityChange) onFooterVisibilityChange(true);
+      }
+    };
+
+    const currentSlideEl = slideRefs[activeSlide]?.current;
+    if (currentSlideEl) {
+      currentSlideEl.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    return () => {
+      if (currentSlideEl) {
+        currentSlideEl.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [activeSlide, onFooterVisibilityChange]);
+
+  // Global window scroll fallback
+  useEffect(() => {
+    let lastWinScroll = window.scrollY || 0;
+    const handleWinScroll = () => {
+      const current = window.scrollY || 0;
+      const diff = current - lastWinScroll;
+      if (Math.abs(diff) > 8) {
+        if (diff > 0 && current > 20) {
+          if (onFooterVisibilityChange) onFooterVisibilityChange(false);
+        } else if (diff < 0) {
+          if (onFooterVisibilityChange) onFooterVisibilityChange(true);
+        }
+        lastWinScroll = current;
+      }
+      if (current <= 15) {
+        if (onFooterVisibilityChange) onFooterVisibilityChange(true);
+      }
+    };
+    window.addEventListener('scroll', handleWinScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleWinScroll);
+  }, [onFooterVisibilityChange]);
+
+  // When changing slides, ensure footer is visible
+  useEffect(() => {
+    if (onFooterVisibilityChange) {
+      onFooterVisibilityChange(true);
+    }
+  }, [activeSlide, onFooterVisibilityChange]);
 
   const goToSlide = useCallback((index) => {
     if (index >= 0 && index < SECTIONS.length) {

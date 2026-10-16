@@ -2246,25 +2246,25 @@ button {
     align-items: center;
     justify-content: center;
     text-align: center;
-    max-width: 280px;
+    max-width: 290px;
     width: 100%;
     margin: 0 auto 0.45rem;
-    padding: 0.65rem 0.85rem;
+    padding: 0.75rem 0.85rem;
     border-radius: var(--radius-md);
     background: #ffffff;
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
   }
   .carousel-slide .hero-avatar-wrapper {
-    width: 84px;
-    height: 84px;
+    width: 110px;
+    height: 110px;
     margin: 0 auto 0.45rem;
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
-    padding: 3.5px;
+    padding: 4.5px;
     background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.22);
+    box-shadow: 0 5px 18px rgba(37, 99, 235, 0.26);
   }
   .hero-card-name {
     font-size: 1.05rem;
@@ -2332,8 +2332,7 @@ button {
     margin-bottom: 0.15rem;
   }
   .hero-subtitle-role {
-    font-size: 0.78rem;
-    margin-bottom: 0.2rem;
+    display: none;
   }
   .hero-bio {
     font-size: 0.78rem;

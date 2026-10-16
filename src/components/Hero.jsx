@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, Shield, Mail, User, Linkedin, Phone, FileText, Download, Award, Zap, Clock } from 'lucide-react';
+import { CheckCircle, Shield, Mail, User, Linkedin, Phone, FileText, Download, Award, Zap, Clock, MapPin } from 'lucide-react';
 
 export default function Hero({ profile, certCount, onOpenResumeModal, onNavigateSection }) {
   return (
@@ -46,13 +46,13 @@ export default function Hero({ profile, certCount, onOpenResumeModal, onNavigate
               </button>
             </div>
 
-            {/* Enhanced Minimalist Graphic Cards Section */}
+            {/* Enhanced Minimalist Graphic Cards Section - Single X-Axis Line */}
             <div className="hero-graphic-stats">
               <div className="graphic-stat-card">
                 <div className="graphic-stat-icon" style={{ background: '#eff6ff', color: '#2563eb' }}>
-                  <Award size={20} />
+                  <Award size={18} />
                 </div>
-                <div>
+                <div className="graphic-stat-text-wrap">
                   <div className="graphic-stat-value">Accredited Credentials</div>
                   <div className="graphic-stat-label">Verified Badges & Coursework</div>
                 </div>
@@ -60,27 +60,27 @@ export default function Hero({ profile, certCount, onOpenResumeModal, onNavigate
 
               <div className="graphic-stat-card">
                 <div className="graphic-stat-icon" style={{ background: '#f0fdf4', color: '#16a34a' }}>
-                  <Zap size={20} />
+                  <Zap size={18} />
                 </div>
-                <div>
-                  <div className="graphic-stat-value">80+ WPM</div>
-                  <div className="graphic-stat-label">Typing Speed (100% Accuracy)</div>
+                <div className="graphic-stat-text-wrap">
+                  <div className="graphic-stat-value">105 WPM Typing</div>
+                  <div className="graphic-stat-label">100% Precision (Expert)</div>
                 </div>
               </div>
 
               <div className="graphic-stat-card">
                 <div className="graphic-stat-icon" style={{ background: '#fef3c7', color: '#d97706' }}>
-                  <Clock size={20} />
+                  <Clock size={18} />
                 </div>
-                <div>
+                <div className="graphic-stat-text-wrap">
                   <div className="graphic-stat-value">08:00 AM - 05:00 AM EST</div>
-                  <div className="graphic-stat-label">Available Hours (US/UK Coverage)</div>
+                  <div className="graphic-stat-label">Full Shift Availability</div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Profile Card with Profile Picture */}
+          {/* Profile Card with Profile Picture - Vertically Enlarged */}
           <div className="hero-card">
             <div className="hero-avatar-wrapper">
               {profile.avatarUrl ? (
@@ -91,7 +91,7 @@ export default function Hero({ profile, certCount, onOpenResumeModal, onNavigate
                 />
               ) : (
                 <div className="hero-avatar">
-                  <User size={48} />
+                  <User size={56} />
                 </div>
               )}
             </div>
@@ -99,7 +99,17 @@ export default function Hero({ profile, certCount, onOpenResumeModal, onNavigate
             <h2 className="hero-card-name">{profile.name}</h2>
             <p className="hero-card-title">Aspiring Virtual Assistant</p>
 
-            <div className="social-links" style={{ marginTop: '1rem' }}>
+            <div className="hero-card-location">
+              <MapPin size={13} />
+              <span>{profile.location || 'Lipa City, Philippines'}</span>
+            </div>
+
+            <div className="hero-card-availability">
+              <span className="infra-status-dot"></span>
+              <span>EST Shift Ready</span>
+            </div>
+
+            <div className="social-links" style={{ marginTop: '1.25rem' }}>
               {profile.linkedin && (
                 <a href={profile.linkedin} target="_blank" rel="noreferrer" className="icon-btn" title="LinkedIn Profile">
                   <Linkedin size={18} />

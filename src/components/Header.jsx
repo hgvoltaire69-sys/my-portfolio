@@ -31,7 +31,8 @@ export default function Header({ profile, activeSlide, onNavigateSection }) {
             onClick={(e) => handleClick(e, 'certifications')}
             className={`nav-link ${activeSlide === 1 ? 'active' : ''}`}
           >
-            Certifications
+            <span className="nav-text-full">Certifications</span>
+            <span className="nav-text-short">Certs</span>
           </button>
           <button
             type="button"

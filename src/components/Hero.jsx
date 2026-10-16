@@ -53,8 +53,8 @@ export default function Hero({ profile, certCount, onOpenResumeModal, onNavigate
                   <Award size={20} />
                 </div>
                 <div>
-                  <div className="graphic-stat-value">{certCount} Credentials</div>
-                  <div className="graphic-stat-label">Accredited Coursework & Badges</div>
+                  <div className="graphic-stat-value">Accredited Credentials</div>
+                  <div className="graphic-stat-label">Verified Badges & Coursework</div>
                 </div>
               </div>
 

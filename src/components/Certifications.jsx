@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Award, ChevronDown, ChevronUp, ExternalLink, Eye, Cloud, Code, Shield, Database, Cpu, Languages } from 'lucide-react';
 import CertCard from './CertCard';
 
-const categories = ['All', 'Marketing & CRM', 'Language & Communication', 'Project Management', 'AI & Tech', 'Finance & Admin', 'Crisis & Wellness'];
+const categories = ['All', 'Language & Communication', 'Crisis & Wellness', 'AI & Tech', 'Marketing & CRM', 'Project Management', 'Finance & Admin'];
 
 const iconMap = {
   Award,

@@ -3,7 +3,7 @@
  * Authentic Information & Accredited Credentials for Elijah Exconde
  */
 
-const STORAGE_KEY = 'my_react_portfolio_data_v12';
+const STORAGE_KEY = 'my_react_portfolio_data_v13';
 
 export const initialPortfolioData = {
   profile: {
@@ -20,74 +20,18 @@ export const initialPortfolioData = {
   },
   certifications: [
     {
-      id: "cert-1",
-      title: "HubSpot Email Marketing Certified",
-      issuer: "HubSpot Academy",
-      issueDate: "2026-09-29",
-      expiryDate: "2028-10-28",
-      credentialId: "08ee7c9cdb6545b1b089eeefc7f7130c",
-      credentialUrl: "https://academy.hubspot.com/",
-      category: "Marketing & CRM",
-      badgeIcon: "Award",
-      imagePath: "images/certificateHUBSPOTEMAILS.png",
-      skills: ["Email Strategy", "Audience Segmentation", "Email Design", "Deliverability", "A/B Testing"],
-      description: "Certified in building an email marketing strategy to build trust, audience segmentation, high-performing email sends, design, and deliverability optimization."
-    },
-    {
-      id: "cert-2",
-      title: "HubSpot Salesforce Integration Certification",
-      issuer: "HubSpot Academy",
-      issueDate: "2026-09-29",
-      expiryDate: "2027-10-29",
-      credentialId: "f9ea628256294b1ca642d68bc7bdd17f",
-      credentialUrl: "https://academy.hubspot.com/",
-      category: "Marketing & CRM",
-      badgeIcon: "Cloud",
-      imagePath: "images/certificateHUBSPOTSALESFORCE.png",
-      skills: ["Salesforce Integration", "HubSpot CRM", "System Maintenance", "Troubleshooting", "Data Sync"],
-      description: "Certified as fully capable and skilled in installing, implementing, troubleshooting, and maintaining the Salesforce integration with HubSpot."
-    },
-    {
-      id: "cert-3",
-      title: "Project Management Training (CBRE & Forage)",
-      issuer: "CBRE & Forage",
-      issueDate: "2026-09-30",
+      id: "cert-8",
+      title: "EF SET English Certificate — C1 Advanced",
+      issuer: "EF Standard English Test (EF SET)",
+      issueDate: "2026-10-16",
       expiryDate: "Never Expires",
-      credentialId: "6abcae0ede68562c3ede3b50",
-      credentialUrl: "https://www.theforage.com/",
-      category: "Project Management",
-      badgeIcon: "Award",
-      imagePath: "images/certificatePROJECTMANAGEMENT-1.png",
-      skills: ["Project Planning", "Executing & Monitoring", "Gantt Charts", "Task Tracking", "Resource Coordination"],
-      description: "Statement of Completion for practical tasks in project planning, executing, tracking, and monitoring through CBRE's Project Management Job Simulation on Forage."
-    },
-    {
-      id: "cert-4",
-      title: "Elements of AI - Certificate of Completion",
-      issuer: "University of Helsinki & MinnaLearn",
-      issueDate: "2026-09-30",
-      expiryDate: "Never Expires",
-      credentialId: "zaricm0nm1r",
-      credentialUrl: "https://certificates.mooc.fi/validate/zaricm0nm1r",
-      category: "AI & Tech",
-      badgeIcon: "Cpu",
-      imagePath: "images/certificateELEMENTSOFAI.png",
-      skills: ["Artificial Intelligence", "Machine Learning", "AI Ethics", "Neural Networks"],
-      description: "Successfully completed the 2 ECTS credits online course covering artificial intelligence concepts, algorithms, machine learning models, and societal impacts."
-    },
-    {
-      id: "cert-5",
-      title: "Introduction to Bookkeeping and Accounting",
-      issuer: "OpenLearn | The Open University",
-      issueDate: "2026-09-30",
-      expiryDate: "Never Expires",
-      credentialId: "Course Code: B190_1",
-      credentialUrl: "https://www.open.edu/openlearn/money-business/introduction-bookkeeping-and-accounting/content-section-0",
-      category: "Finance & Admin",
-      badgeIcon: "Database",
-      imagePath: "images/certificateBOOKKEEPING-1.png",
-      skills: ["Double-Entry Bookkeeping", "Accounting Principles", "Financial Records", "Numerical Skills"],
-      description: "Statement of Participation for completing an 8-hour course covering essential numerical skills required for accounting and bookkeeping including double-entry bookkeeping."
+      credentialId: "cert.efset.org/XucPme",
+      credentialUrl: "https://cert.efset.org/XucPme",
+      category: "Language & Communication",
+      badgeIcon: "Languages",
+      imagePath: "images/certificateENGPROFICIENCY-1.png",
+      skills: ["English Proficiency (C1 Advanced)", "C2 Proficient Reading (75/100)", "C2 Proficient Listening (72/100)", "Professional Communication"],
+      description: "Official EF SET English Certificate scoring 65/100 (C1 Advanced) on the CEFR scale. Verified C2 Proficient in Reading (75/100) and Listening (72/100), demonstrating advanced English fluency for international client communications and virtual assistance."
     },
     {
       id: "cert-6",
@@ -104,6 +48,76 @@ export const initialPortfolioData = {
       description: "Completed Psychological First Aid (PFA) Online training for crisis intervention, disaster response, and traumatic stress support."
     },
     {
+      id: "cert-4",
+      title: "Elements of AI - Certificate of Completion",
+      issuer: "University of Helsinki & MinnaLearn",
+      issueDate: "2026-09-30",
+      expiryDate: "Never Expires",
+      credentialId: "zaricm0nm1r",
+      credentialUrl: "https://certificates.mooc.fi/validate/zaricm0nm1r",
+      category: "AI & Tech",
+      badgeIcon: "Cpu",
+      imagePath: "images/certificateELEMENTSOFAI.png",
+      skills: ["Artificial Intelligence", "Machine Learning", "AI Ethics", "Neural Networks"],
+      description: "Successfully completed the 2 ECTS credits online course covering artificial intelligence concepts, algorithms, machine learning models, and societal impacts."
+    },
+    {
+      id: "cert-2",
+      title: "HubSpot Salesforce Integration Certification",
+      issuer: "HubSpot Academy",
+      issueDate: "2026-09-29",
+      expiryDate: "2027-10-29",
+      credentialId: "f9ea628256294b1ca642d68bc7bdd17f",
+      credentialUrl: "https://academy.hubspot.com/",
+      category: "Marketing & CRM",
+      badgeIcon: "Cloud",
+      imagePath: "images/certificateHUBSPOTSALESFORCE.png",
+      skills: ["Salesforce Integration", "HubSpot CRM", "System Maintenance", "Troubleshooting", "Data Sync"],
+      description: "Certified as fully capable and skilled in installing, implementing, troubleshooting, and maintaining the Salesforce integration with HubSpot."
+    },
+    {
+      id: "cert-1",
+      title: "HubSpot Email Marketing Certified",
+      issuer: "HubSpot Academy",
+      issueDate: "2026-09-29",
+      expiryDate: "2028-10-28",
+      credentialId: "08ee7c9cdb6545b1b089eeefc7f7130c",
+      credentialUrl: "https://academy.hubspot.com/",
+      category: "Marketing & CRM",
+      badgeIcon: "Award",
+      imagePath: "images/certificateHUBSPOTEMAILS.png",
+      skills: ["Email Strategy", "Audience Segmentation", "Email Design", "Deliverability", "A/B Testing"],
+      description: "Certified in building an email marketing strategy to build trust, audience segmentation, high-performing email sends, design, and deliverability optimization."
+    },
+    {
+      id: "cert-3",
+      title: "Project Management Training (CBRE & Forage)",
+      issuer: "CBRE & Forage",
+      issueDate: "2026-09-30",
+      expiryDate: "Never Expires",
+      credentialId: "6abcae0ede68562c3ede3b50",
+      credentialUrl: "https://www.theforage.com/",
+      category: "Project Management",
+      badgeIcon: "Award",
+      imagePath: "images/certificatePROJECTMANAGEMENT-1.png",
+      skills: ["Project Planning", "Executing & Monitoring", "Gantt Charts", "Task Tracking", "Resource Coordination"],
+      description: "Statement of Completion for practical tasks in project planning, executing, tracking, and monitoring through CBRE's Project Management Job Simulation on Forage."
+    },
+    {
+      id: "cert-5",
+      title: "Introduction to Bookkeeping and Accounting",
+      issuer: "OpenLearn | The Open University",
+      issueDate: "2026-09-30",
+      expiryDate: "Never Expires",
+      credentialId: "Course Code: B190_1",
+      credentialUrl: "https://www.open.edu/openlearn/money-business/introduction-bookkeeping-and-accounting/content-section-0",
+      category: "Finance & Admin",
+      badgeIcon: "Database",
+      imagePath: "images/certificateBOOKKEEPING-1.png",
+      skills: ["Double-Entry Bookkeeping", "Accounting Principles", "Financial Records", "Numerical Skills"],
+      description: "Statement of Participation for completing an 8-hour course covering essential numerical skills required for accounting and bookkeeping including double-entry bookkeeping."
+    },
+    {
       id: "cert-7",
       title: "Typing Proficiency Certificate of Excellence",
       issuer: "TypingTest.me",
@@ -116,20 +130,6 @@ export const initialPortfolioData = {
       imagePath: "images/certificateTYPESPEEDPDF-1.png",
       skills: ["80+ WPM Typing Speed", "100% Accuracy Rate", "96% Consistency", "Fast Data Entry"],
       description: "Achieved Expert Typing Proficiency rating with 80+ WPM (Words Per Minute), 100% Precision Accuracy Rate, and 96% Stability Consistency."
-    },
-    {
-      id: "cert-8",
-      title: "EF SET English Certificate — C1 Advanced",
-      issuer: "EF Standard English Test (EF SET)",
-      issueDate: "2026-10-16",
-      expiryDate: "Never Expires",
-      credentialId: "cert.efset.org/XucPme",
-      credentialUrl: "https://cert.efset.org/XucPme",
-      category: "Language & Communication",
-      badgeIcon: "Languages",
-      imagePath: "images/certificateENGPROFICIENCY-1.png",
-      skills: ["English Proficiency (C1 Advanced)", "C2 Proficient Reading (75/100)", "C2 Proficient Listening (72/100)", "Professional Communication"],
-      description: "Official EF SET English Certificate scoring 65/100 (C1 Advanced) on the CEFR scale. Verified C2 Proficient in Reading (75/100) and Listening (72/100), demonstrating advanced English fluency for international client communications and virtual assistance."
     }
   ],
   skills: [
@@ -137,12 +137,12 @@ export const initialPortfolioData = {
       category: "Verified Credentials & Coursework",
       items: [
         "EF SET English C1 Advanced (C2 Reading & Listening)",
-        "CBRE Project Management Simulation (Forage)",
-        "HubSpot Accredited Email Marketer",
-        "Salesforce CRM Integration Specialist",
-        "University of Helsinki AI Foundations",
-        "OpenLearn Bookkeeping & Accounting Coursework",
         "NCTSN Psychological First Aid Trained",
+        "University of Helsinki AI Foundations",
+        "Salesforce CRM Integration Specialist",
+        "HubSpot Accredited Email Marketer",
+        "CBRE Project Management Simulation (Forage)",
+        "OpenLearn Bookkeeping & Accounting Coursework",
         "105 WPM / 100% Accuracy Data Entry"
       ]
     },

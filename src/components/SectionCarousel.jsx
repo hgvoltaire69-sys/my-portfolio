@@ -18,9 +18,9 @@ export const SECTIONS = [
     id: 'certifications',
     title: 'Certifications',
     shortTitle: 'Certifications',
-    desc: '7 verified badges & credentials',
+    desc: 'Verified badges & credentials',
     icon: Award,
-    badge: '7 Badges'
+    badge: '8 Badges'
   },
   {
     id: 'skills',
@@ -140,9 +140,17 @@ export default function SectionCarousel({
                   <div className="showcase-btn-text">
                     <div className="showcase-btn-title-row">
                       <span className="showcase-btn-title">{sec.title}</span>
-                      <span className="showcase-btn-badge">{sec.badge}</span>
+                      <span className="showcase-btn-badge">
+                        {sec.id === 'certifications' && certifications?.length
+                          ? `${certifications.length} Badges`
+                          : sec.badge}
+                      </span>
                     </div>
-                    <span className="showcase-btn-desc">{sec.desc}</span>
+                    <span className="showcase-btn-desc">
+                      {sec.id === 'certifications' && certifications?.length
+                        ? `${certifications.length} verified badges & credentials`
+                        : sec.desc}
+                    </span>
                   </div>
                   {isActive && <div className="showcase-btn-active-bar" />}
                 </button>

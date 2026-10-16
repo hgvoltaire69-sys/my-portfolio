@@ -3,7 +3,7 @@
  * Authentic Information & Accredited Credentials for Elijah Exconde
  */
 
-const STORAGE_KEY = 'my_react_portfolio_data_v11';
+const STORAGE_KEY = 'my_react_portfolio_data_v12';
 
 export const initialPortfolioData = {
   profile: {
@@ -116,12 +116,27 @@ export const initialPortfolioData = {
       imagePath: "images/certificateTYPESPEEDPDF-1.png",
       skills: ["80+ WPM Typing Speed", "100% Accuracy Rate", "96% Consistency", "Fast Data Entry"],
       description: "Achieved Expert Typing Proficiency rating with 80+ WPM (Words Per Minute), 100% Precision Accuracy Rate, and 96% Stability Consistency."
+    },
+    {
+      id: "cert-8",
+      title: "EF SET English Certificate — C1 Advanced",
+      issuer: "EF Standard English Test (EF SET)",
+      issueDate: "2026-10-16",
+      expiryDate: "Never Expires",
+      credentialId: "cert.efset.org/XucPme",
+      credentialUrl: "https://cert.efset.org/XucPme",
+      category: "Language & Communication",
+      badgeIcon: "Languages",
+      imagePath: "images/certificateENGPROFICIENCY-1.png",
+      skills: ["English Proficiency (C1 Advanced)", "C2 Proficient Reading (75/100)", "C2 Proficient Listening (72/100)", "Professional Communication"],
+      description: "Official EF SET English Certificate scoring 65/100 (C1 Advanced) on the CEFR scale. Verified C2 Proficient in Reading (75/100) and Listening (72/100), demonstrating advanced English fluency for international client communications and virtual assistance."
     }
   ],
   skills: [
     {
       category: "Verified Credentials & Coursework",
       items: [
+        "EF SET English C1 Advanced (C2 Reading & Listening)",
         "CBRE Project Management Simulation (Forage)",
         "HubSpot Accredited Email Marketer",
         "Salesforce CRM Integration Specialist",

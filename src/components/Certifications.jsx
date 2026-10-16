@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Award, ChevronDown, ChevronUp, ExternalLink, Eye, Cloud, Code, Shield, Database, Cpu } from 'lucide-react';
+import { Award, ChevronDown, ChevronUp, ExternalLink, Eye, Cloud, Code, Shield, Database, Cpu, Languages } from 'lucide-react';
 import CertCard from './CertCard';
 
-const categories = ['All', 'Marketing & CRM', 'Project Management', 'AI & Tech', 'Finance & Admin', 'Crisis & Wellness'];
+const categories = ['All', 'Marketing & CRM', 'Language & Communication', 'Project Management', 'AI & Tech', 'Finance & Admin', 'Crisis & Wellness'];
 
 const iconMap = {
   Award,
@@ -10,7 +10,8 @@ const iconMap = {
   Code,
   Shield,
   Database,
-  Cpu
+  Cpu,
+  Languages
 };
 
 export default function Certifications({ certifications, onViewDetail }) {

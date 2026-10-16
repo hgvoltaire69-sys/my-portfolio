@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Cloud, Code, Shield, Database, Cpu, ChevronRight, ExternalLink } from 'lucide-react';
+import { Award, Cloud, Code, Shield, Database, Cpu, Languages, ChevronRight, ExternalLink } from 'lucide-react';
 
 const iconMap = {
   Award,
@@ -7,7 +7,8 @@ const iconMap = {
   Code,
   Shield,
   Database,
-  Cpu
+  Cpu,
+  Languages
 };
 
 export default function CertCard({ cert, onViewDetail }) {
